@@ -4,10 +4,9 @@ const port = 3000;
 
 app.use(express.json())
 
-// import routes before using
+// import routes before using (delete note later)
 const authRoutes = require('./routes/auth')
-
-// mount router 
+// mount router (delete note later)
 app.use('/auth', authRoutes)
 
 app.listen(port, () => {
