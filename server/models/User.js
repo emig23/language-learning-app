@@ -17,6 +17,15 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true
+    },
+
+    streakCount: {
+        type: Number,
+        default: 0
+    },
+
+    currLevel: {
+        type: String
     }
     
 })
