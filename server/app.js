@@ -4,14 +4,14 @@ const app = express();
 const port = 3000;
 
 
-// import routes before using (delete note later)
+// import routes before using 
 const connectDB = require('./config/db')
 const authRoutes = require('./routes/auth')
 
 // connect to database
 connectDB()
 
-// mount router (delete note later)
+// mount router 
 app.use(express.json())
 app.use('/auth', authRoutes)
 
