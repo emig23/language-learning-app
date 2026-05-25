@@ -37,4 +37,4 @@ const wordVocabItemSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('WordVocabItem', wordVocabItemSchema);
+module.exports = mongoose.model('words', wordVocabItemSchema);
