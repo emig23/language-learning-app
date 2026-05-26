@@ -1,0 +1,100 @@
+.page {
+  padding: 24px 20px;
+  color: #f0eeff;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #6b6b8a;
+  margin: 0 0 28px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #1a1a24;
+  border: 1px solid #2a2a38;
+  border-radius: 14px;
+  padding: 16px;
+  transition: border-color 0.15s;
+}
+
+.card.active {
+  border-color: #a78bfa;
+}
+
+.card.unavailable {
+  opacity: 0.4;
+}
+
+.flag {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.info {
+  flex: 1;
+}
+
+.langName {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 3px;
+  text-transform: capitalize;
+}
+
+.langDesc {
+  font-size: 13px;
+  color: #6b6b8a;
+  margin: 0;
+}
+
+.activeBadge {
+  background: #a78bfa22;
+  color: #a78bfa;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 99px;
+  border: 1px solid #a78bfa44;
+  flex-shrink: 0;
+}
+
+.switchBtn {
+  background: #2a2a3e;
+  color: #f0eeff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.switchBtn:hover {
+  background: #3a3a52;
+}
+
+.soonBadge {
+  background: #2a2a38;
+  color: #6b6b8a;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 99px;
+  flex-shrink: 0;
+}

@@ -1,0 +1,139 @@
+.page {
+  padding: 24px 20px;
+  color: #f0eeff;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.greeting {
+  font-size: 14px;
+  color: #6b6b8a;
+  margin: 0 0 4px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #f0eeff;
+  margin: 0;
+}
+
+.logoutBtn {
+  background: #1a1a24;
+  border: 1px solid #2a2a38;
+  color: #9090b0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.logoutBtn:hover {
+  color: #f0eeff;
+}
+
+.streak {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #1a1a24;
+  border: 1px solid #2a2a38;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 28px;
+}
+
+.streakIcon {
+  font-size: 20px;
+}
+
+.streakCount {
+  font-size: 14px;
+  font-weight: 500;
+  color: #facc15;
+}
+
+.sectionTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b6b8a;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 12px;
+}
+
+.lessonList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lessonCard {
+  background: #1a1a24;
+  border: 1px solid #2a2a38;
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.1s;
+  text-align: left;
+}
+
+.lessonCard:hover:not(:disabled) {
+  border-color: #a78bfa;
+  transform: translateX(3px);
+}
+
+.lessonCard.locked {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.lessonLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.difficultyDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.lessonTitle {
+  font-size: 15px;
+  font-weight: 500;
+  color: #f0eeff;
+  margin: 0 0 2px;
+}
+
+.lessonDifficulty {
+  font-size: 12px;
+  color: #6b6b8a;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.lessonRight {
+  flex-shrink: 0;
+}
+
+.lockIcon {
+  font-size: 16px;
+}
+
+.progressRing {
+  font-size: 12px;
+  color: #a78bfa;
+  font-weight: 600;
+}
