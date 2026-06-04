@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
 import styles from '../styles/auth.module.css';
 
 export default function Auth() {
-  const [tab, setTab] = useState('login');
+  const [searchParams] = useSearchParams();
+  const [tab, setTab] = useState(searchParams.get('tab') === 'register' ? 'register' : 'login');
   const [form, setForm] = useState({ name: '', email: '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -35,7 +37,7 @@ export default function Auth() {
       <div className={styles.card}>
         <div className={styles.brand}>
           <span className={styles.brandIcon}>𝕃</span>
-          <h1 className={styles.brandName}>Lingua</h1>
+          <h1 className={styles.brandName}>LanguageLearningApp</h1>
         </div>
         <p className={styles.tagline}>Learn a new language, one lesson at a time.</p>
 

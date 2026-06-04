@@ -1,10 +1,10 @@
 .page {
   min-height: 100vh;
-  background: #0f0f14;
+  background: var(--bg-base);
   display: flex;
   flex-direction: column;
   padding: 20px;
-  color: #f0eeff;
+  color: var(--text-primary);
 }
 
 .header {
@@ -15,9 +15,9 @@
 }
 
 .backBtn {
-  background: #1a1a24;
-  border: 1px solid #2a2a38;
-  color: #9090b0;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
   border-radius: 8px;
   padding: 8px 12px;
   font-size: 16px;
@@ -28,27 +28,27 @@
 .progressBar {
   flex: 1;
   height: 6px;
-  background: #2a2a38;
+  background: var(--border);
   border-radius: 99px;
   overflow: hidden;
 }
 
 .progressFill {
   height: 100%;
-  background: #a78bfa;
+  background: var(--accent-primary);
   border-radius: 99px;
   transition: width 0.3s ease;
 }
 
 .counter {
   font-size: 13px;
-  color: #6b6b8a;
+  color: var(--text-secondary);
   flex-shrink: 0;
 }
 
 .card {
-  background: #1a1a24;
-  border: 1px solid #2a2a38;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
   border-radius: 18px;
   padding: 32px 24px;
   margin-bottom: 24px;
@@ -57,7 +57,7 @@
 
 .prompt {
   font-size: 13px;
-  color: #6b6b8a;
+  color: var(--text-secondary);
   margin: 0 0 14px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -67,7 +67,7 @@
 .sentence {
   font-size: 26px;
   font-weight: 600;
-  color: #f0eeff;
+  color: var(--text-primary);
   margin: 0;
   line-height: 1.35;
 }
@@ -79,11 +79,11 @@
 }
 
 .input {
-  background: #1a1a24;
-  border: 1px solid #2a2a38;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
   border-radius: 14px;
   padding: 16px;
-  color: #f0eeff;
+  color: var(--text-primary);
   font-size: 16px;
   resize: none;
   outline: none;
@@ -92,11 +92,11 @@
 }
 
 .input:focus {
-  border-color: #a78bfa;
+  border-color: var(--accent-primary);
 }
 
 .input::placeholder {
-  color: #3a3a52;
+  color: var(--text-muted);
 }
 
 .input:disabled {
@@ -115,27 +115,27 @@
 }
 
 .correct {
-  background: rgba(74, 222, 128, 0.1);
-  border: 1px solid rgba(74, 222, 128, 0.3);
-  color: #4ade80;
+  background: color-mix(in srgb, var(--accent-teal) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-teal) 35%, transparent);
+  color: var(--accent-teal);
 }
 
 .incorrect {
-  background: rgba(248, 113, 113, 0.1);
-  border: 1px solid rgba(248, 113, 113, 0.3);
-  color: #f87171;
+  background: color-mix(in srgb, var(--accent-secondary) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-secondary) 35%, transparent);
+  color: var(--accent-secondary);
 }
 
 .answer {
   margin-top: 6px !important;
-  color: #f0eeff;
+  color: var(--text-primary);
   font-weight: 400;
   font-size: 14px;
 }
 
 .btn {
-  background: #a78bfa;
-  color: #0f0f14;
+  background: var(--accent-primary);
+  color: var(--bg-base);
   border: none;
   border-radius: 12px;
   padding: 15px;
@@ -176,6 +176,6 @@
 
 .scoreText {
   font-size: 18px;
-  color: #a78bfa;
+  color: var(--accent-teal);
   margin: 0;
 }

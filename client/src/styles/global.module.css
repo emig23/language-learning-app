@@ -8,10 +8,26 @@ html, body, #root {
   height: 100%;
 }
 
+:root {
+  --bg-base:          #0d0a12;
+  --bg-surface:       #161020;
+  --bg-elevated:      #1e1730;
+  --border:           #2e2248;
+
+  --accent-primary:   #e8547a;
+  --accent-secondary: #c45ecf;
+  --accent-teal:      #3ecfcf;
+  --accent-orange:    #e8824a;
+
+  --text-primary:     #f5eeff;
+  --text-secondary:   #8b7aaa;
+  --text-muted:       #4a3d6b;
+}
+
 body {
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  background: #0f0f14;
-  color: #f0eeff;
+  background: var(--bg-base);
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
 }
 

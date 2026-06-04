@@ -1,32 +1,27 @@
 .page {
-  padding: 24px 20px;
-  color: #f0eeff;
+  padding: 24px 20px 24px;
+  color: var(--text-primary);
 }
 
+/* Header */
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 20px;
+  align-items: center;
+  margin-bottom: 24px;
 }
 
 .greeting {
-  font-size: 14px;
-  color: #6b6b8a;
-  margin: 0 0 4px;
-}
-
-.title {
-  font-size: 22px;
-  font-weight: 700;
-  color: #f0eeff;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
   margin: 0;
 }
 
 .logoutBtn {
-  background: #1a1a24;
-  border: 1px solid #2a2a38;
-  color: #9090b0;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
   border-radius: 8px;
   padding: 8px 12px;
   font-size: 16px;
@@ -35,39 +30,118 @@
 }
 
 .logoutBtn:hover {
-  color: #f0eeff;
+  color: var(--text-primary);
 }
 
-.streak {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #1a1a24;
-  border: 1px solid #2a2a38;
-  border-radius: 12px;
-  padding: 12px 16px;
+/* Sections */
+.section {
   margin-bottom: 28px;
 }
 
-.streakIcon {
-  font-size: 20px;
-}
-
-.streakCount {
-  font-size: 14px;
-  font-weight: 500;
-  color: #facc15;
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
 }
 
 .sectionTitle {
-  font-size: 13px;
-  font-weight: 600;
-  color: #6b6b8a;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin: 0 0 12px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
 }
 
+.viewAll {
+  font-size: 12px;
+  color: var(--accent-primary);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* Course Cards */
+.courseGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.courseCard {
+  border-radius: 18px;
+  padding: 16px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.15s;
+  border: none;
+}
+
+.courseCard:hover {
+  transform: translateY(-2px);
+}
+
+.courseTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.courseLanguage {
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 3px;
+}
+
+.courseLessons {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+}
+
+.courseFlag {
+  font-size: 36px;
+  position: absolute;
+  bottom: 10px;
+  right: 14px;
+  opacity: 0.85;
+}
+
+/* Stats */
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.statCard {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+
+.statLabel {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin: 0 0 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+
+.statValue {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Lesson List */
 .lessonList {
   display: flex;
   flex-direction: column;
@@ -75,20 +149,21 @@
 }
 
 .lessonCard {
-  background: #1a1a24;
-  border: 1px solid #2a2a38;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 16px;
+  padding: 14px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
   transition: border-color 0.15s, transform 0.1s;
   text-align: left;
+  width: 100%;
 }
 
 .lessonCard:hover:not(:disabled) {
-  border-color: #a78bfa;
+  border-color: var(--accent-primary);
   transform: translateX(3px);
 }
 
@@ -111,15 +186,15 @@
 }
 
 .lessonTitle {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
-  color: #f0eeff;
+  color: var(--text-primary);
   margin: 0 0 2px;
 }
 
 .lessonDifficulty {
-  font-size: 12px;
-  color: #6b6b8a;
+  font-size: 11px;
+  color: var(--text-secondary);
   margin: 0;
   text-transform: capitalize;
 }
@@ -129,11 +204,32 @@
 }
 
 .lockIcon {
-  font-size: 16px;
+  font-size: 15px;
 }
 
-.progressRing {
+.doneBadge {
   font-size: 12px;
-  color: #a78bfa;
   font-weight: 600;
+  color: var(--accent-teal);
+  background: color-mix(in srgb, var(--accent-teal) 12%, transparent);
+  padding: 4px 10px;
+  border-radius: 99px;
+}
+
+.progressBadge {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-orange);
+  background: color-mix(in srgb, var(--accent-orange) 12%, transparent);
+  padding: 4px 10px;
+  border-radius: 99px;
+}
+
+.startBadge {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-primary);
+  background: color-mix(in srgb, var(--accent-primary) 12%, transparent);
+  padding: 4px 10px;
+  border-radius: 99px;
 }

@@ -1,6 +1,6 @@
 .page {
   padding: 24px 20px;
-  color: #f0eeff;
+  color: var(--text-primary);
 }
 
 .title {
@@ -11,7 +11,7 @@
 
 .subtitle {
   font-size: 14px;
-  color: #6b6b8a;
+  color: var(--text-secondary);
   margin: 0 0 28px;
 }
 
@@ -25,15 +25,15 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  background: #1a1a24;
-  border: 1px solid #2a2a38;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
   border-radius: 14px;
   padding: 16px;
   transition: border-color 0.15s;
 }
 
 .card.active {
-  border-color: #a78bfa;
+  border-color: var(--accent-primary);
 }
 
 .card.unavailable {
@@ -58,24 +58,24 @@
 
 .langDesc {
   font-size: 13px;
-  color: #6b6b8a;
+  color: var(--text-secondary);
   margin: 0;
 }
 
 .activeBadge {
-  background: #a78bfa22;
-  color: #a78bfa;
+  background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
+  color: var(--accent-primary);
   font-size: 12px;
   font-weight: 600;
   padding: 5px 10px;
   border-radius: 99px;
-  border: 1px solid #a78bfa44;
+  border: 1px solid color-mix(in srgb, var(--accent-primary) 30%, transparent);
   flex-shrink: 0;
 }
 
 .switchBtn {
-  background: #2a2a3e;
-  color: #f0eeff;
+  background: var(--bg-elevated);
+  color: var(--text-primary);
   border: none;
   border-radius: 8px;
   padding: 8px 14px;
@@ -87,12 +87,12 @@
 }
 
 .switchBtn:hover {
-  background: #3a3a52;
+  background: var(--border);
 }
 
 .soonBadge {
-  background: #2a2a38;
-  color: #6b6b8a;
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
   font-size: 12px;
   padding: 5px 10px;
   border-radius: 99px;

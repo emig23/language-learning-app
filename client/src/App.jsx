@@ -1,12 +1,13 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/authContext';
-import Auth from './pages/auth';
-import LanguageSelect from './pages/languageSelect';
-import Dashboard from './pages/dashboard';
-import Lesson from './pages/lesson';
-import Progress from './pages/progress';
-import Languages from './pages/languages';
-import Layout from './components/layout';
+import Landing from './pages/Landing';
+import Auth from './pages/Auth';
+import LanguageSelect from './pages/LanguageSelect';
+import Dashboard from './pages/Dashboard';
+import Lesson from './pages/Lesson';
+import Progress from './pages/Progress';
+import Languages from './pages/Languages';
+import Layout from './components/Layout';
 
 function ProtectedRoute({ children }) {
   const { user } = useAuth();
@@ -18,20 +19,28 @@ function AppRoutes() {
 
   return (
     <Routes>
+      {/* Landing page — public */}
+      <Route path="/" element={user ? <Navigate to="/dashboard" replace /> : <Landing />} />
+
+      {/* Auth */}
       <Route path="/auth" element={user ? <Navigate to="/dashboard" replace /> : <Auth />} />
+
+      {/* Post-register language select */}
       <Route path="/select-language" element={
         <ProtectedRoute><LanguageSelect /></ProtectedRoute>
       } />
+
+      {/* App — protected, uses bottom nav layout */}
       <Route path="/" element={
         <ProtectedRoute><Layout /></ProtectedRoute>
       }>
-        <Route index element={<Navigate to="/dashboard" replace />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="lesson/:id" element={<Lesson />} />
         <Route path="progress" element={<Progress />} />
         <Route path="languages" element={<Languages />} />
       </Route>
-      <Route path="*" element={<Navigate to="/auth" replace />} />
+
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }

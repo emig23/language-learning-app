@@ -3,13 +3,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #0f0f14;
+  background: var(--bg-base);
   padding: 24px;
 }
 
 .card {
-  background: #1a1a24;
-  border: 1px solid #2a2a38;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
   border-radius: 20px;
   padding: 40px 32px;
   width: 100%;
@@ -25,26 +25,26 @@
 
 .brandIcon {
   font-size: 28px;
-  color: #a78bfa;
+  color: var(--accent-secondary);
 }
 
 .brandName {
   font-size: 26px;
   font-weight: 700;
-  color: #f0eeff;
+  color: var(--text-primary);
   margin: 0;
   letter-spacing: -0.5px;
 }
 
 .tagline {
-  color: #6b6b8a;
+  color: var(--text-secondary);
   font-size: 14px;
   margin: 0 0 28px;
 }
 
 .tabs {
   display: flex;
-  background: #111118;
+  background: var(--bg-base);
   border-radius: 10px;
   padding: 4px;
   margin-bottom: 24px;
@@ -55,7 +55,7 @@
   padding: 9px;
   border: none;
   background: transparent;
-  color: #6b6b8a;
+  color: var(--text-secondary);
   font-size: 14px;
   font-weight: 500;
   border-radius: 7px;
@@ -64,8 +64,8 @@
 }
 
 .activeTab {
-  background: #2a2a3e;
-  color: #f0eeff;
+  background: var(--bg-elevated);
+  color: var(--text-primary);
 }
 
 .form {
@@ -83,37 +83,37 @@
 .field label {
   font-size: 13px;
   font-weight: 500;
-  color: #9090b0;
+  color: var(--text-secondary);
 }
 
 .field input {
-  background: #111118;
-  border: 1px solid #2a2a38;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
   border-radius: 10px;
   padding: 12px 14px;
-  color: #f0eeff;
+  color: var(--text-primary);
   font-size: 15px;
   outline: none;
   transition: border-color 0.15s;
 }
 
 .field input:focus {
-  border-color: #a78bfa;
+  border-color: var(--accent-primary);
 }
 
 .field input::placeholder {
-  color: #3a3a52;
+  color: var(--text-muted);
 }
 
 .error {
-  color: #f87171;
+  color: var(--accent-primary);
   font-size: 13px;
   margin: 0;
 }
 
 .submit {
-  background: #a78bfa;
-  color: #0f0f14;
+  background: var(--accent-primary);
+  color: var(--bg-base);
   border: none;
   border-radius: 10px;
   padding: 13px;
