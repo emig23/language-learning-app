@@ -16,11 +16,12 @@ export default function Lesson() {
   const navigate = useNavigate();
   const [index, setIndex] = useState(0);
   const [input, setInput] = useState('');
-  const [feedback, setFeedback] = useState(null); // null | 'correct' | 'incorrect'
+  const [feedback, setFeedback] = useState(null);
   const [score, setScore] = useState(0);
   const [done, setDone] = useState(false);
 
   const current = MOCK_SENTENCES[index];
+  const progress = ((index) / MOCK_SENTENCES.length) * 100;
 
   const handleCheck = () => {
     if (!input.trim()) return;
@@ -39,14 +40,50 @@ export default function Lesson() {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      if (feedback === null && input.trim()) {
+        handleCheck();
+      } else if (feedback !== null) {
+        handleNext();
+      }
+    }
+  };
+
   if (done) {
+    const percent = Math.round((score / MOCK_SENTENCES.length) * 100);
     return (
       <div className={styles.page}>
         <div className={styles.results}>
-          <div className={styles.resultsIcon}>🎉</div>
-          <h1>Lesson Complete!</h1>
-          <p className={styles.scoreText}>{score} / {MOCK_SENTENCES.length} correct</p>
-          <button className={styles.btn} onClick={() => navigate('/dashboard')}>Back to Dashboard</button>
+          <div className={styles.resultsCard}>
+            <div className={styles.resultsIcon}>🎉</div>
+            <h1 className={styles.resultsTitle}>Lesson Complete!</h1>
+            <div className={styles.scoreRow}>
+              <div className={styles.scoreStat}>
+                <p className={styles.scoreNum}>{score}/{MOCK_SENTENCES.length}</p>
+                <p className={styles.scoreLabel}>Correct</p>
+              </div>
+              <div className={styles.scoreDivider} />
+              <div className={styles.scoreStat}>
+                <p className={styles.scoreNum}>{percent}%</p>
+                <p className={styles.scoreLabel}>Accuracy</p>
+              </div>
+              <div className={styles.scoreDivider} />
+              <div className={styles.scoreStat}>
+                <p className={styles.scoreNum}>+{score * 10}</p>
+                <p className={styles.scoreLabel}>Points</p>
+              </div>
+            </div>
+            <div className={styles.resultsActions}>
+              <button className={styles.btnPrimary} onClick={() => { setDone(false); setIndex(0); setInput(''); setFeedback(null); setScore(0); }}>
+                Retry Lesson
+              </button>
+              <button className={styles.btnSecondary} onClick={() => navigate('/dashboard')}>
+                Back to Dashboard
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -54,54 +91,72 @@ export default function Lesson() {
 
   return (
     <div className={styles.page}>
+
+      {/* Top bar */}
       <header className={styles.header}>
-        <button className={styles.backBtn} onClick={() => navigate('/dashboard')}>←</button>
-        <div className={styles.progressBar}>
-          <div
-            className={styles.progressFill}
-            style={{ width: `${((index) / MOCK_SENTENCES.length) * 100}%` }}
-          />
+        <button className={styles.backBtn} onClick={() => navigate('/dashboard')}>← Exit</button>
+        <div className={styles.progressArea}>
+          <div className={styles.progressBar}>
+            <div className={styles.progressFill} style={{ width: `${progress}%` }} />
+          </div>
+          <span className={styles.counter}>{index + 1} of {MOCK_SENTENCES.length}</span>
         </div>
-        <span className={styles.counter}>{index + 1}/{MOCK_SENTENCES.length}</span>
+        <div className={styles.scorePill}>★ {score}</div>
       </header>
 
-      <div className={styles.card}>
-        <p className={styles.prompt}>Translate this sentence:</p>
-        <h2 className={styles.sentence}>{current.sentence}</h2>
-      </div>
+      {/* Centered lesson area */}
+      <div className={styles.lessonArea}>
 
-      <div className={styles.inputArea}>
-        <textarea
-          className={styles.input}
-          placeholder="Type the English translation..."
-          value={input}
-          onChange={e => setInput(e.target.value)}
-          disabled={feedback !== null}
-          rows={3}
-        />
+        <div className={styles.card}>
+          <span className={styles.cardBadge}>Translate</span>
+          <h2 className={styles.sentence}>{current.sentence}</h2>
+          <p className={styles.hint}>Write the English translation below</p>
+        </div>
 
-        {feedback && (
-          <div className={`${styles.feedback} ${styles[feedback]}`}>
-            {feedback === 'correct' ? (
-              <p>✓ Correct!</p>
-            ) : (
-              <>
-                <p>✗ Not quite.</p>
-                <p className={styles.answer}>Answer: <strong>{current.translation}</strong></p>
-              </>
-            )}
-          </div>
-        )}
+        <div className={styles.inputArea}>
+          <textarea
+            className={`${styles.input} ${feedback === 'correct' ? styles.inputCorrect : ''} ${feedback === 'incorrect' ? styles.inputIncorrect : ''}`}
+            placeholder="Type your answer..."
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            onKeyDown={handleKeyDown}
+            disabled={feedback !== null}
+            rows={2}
+            autoFocus
+          />
 
-        {feedback === null ? (
-          <button className={styles.btn} onClick={handleCheck} disabled={!input.trim()}>
-            Check
-          </button>
-        ) : (
-          <button className={styles.btn} onClick={handleNext}>
-            {index + 1 >= MOCK_SENTENCES.length ? 'Finish' : 'Next →'}
-          </button>
-        )}
+          {feedback && (
+            <div className={`${styles.feedback} ${styles[feedback]}`}>
+              {feedback === 'correct' ? (
+                <div className={styles.feedbackRow}>
+                  <span className={styles.feedbackIcon}>✓</span>
+                  <span>Correct!</span>
+                </div>
+              ) : (
+                <div>
+                  <div className={styles.feedbackRow}>
+                    <span className={styles.feedbackIcon}>✗</span>
+                    <span>Not quite</span>
+                  </div>
+                  <p className={styles.answer}>{current.translation}</p>
+                </div>
+              )}
+            </div>
+          )}
+
+          {feedback === null ? (
+            <button className={styles.btnPrimary} onClick={handleCheck} disabled={!input.trim()}>
+              Check Answer
+            </button>
+          ) : (
+            <button className={styles.btnPrimary} onClick={handleNext}>
+              {index + 1 >= MOCK_SENTENCES.length ? 'See Results' : 'Continue →'}
+            </button>
+          )}
+
+          <p className={styles.shortcut}>Press <kbd>Enter</kbd> to submit</p>
+        </div>
+
       </div>
     </div>
   );

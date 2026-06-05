@@ -1,100 +1,308 @@
 .page {
-  padding: 24px 20px;
+  padding: 36px 40px;
   color: var(--text-primary);
+  max-width: 1200px;
 }
 
-.title {
-  font-size: 22px;
-  font-weight: 700;
-  margin: 0 0 6px;
+/* ── Top bar ── */
+.topBar {
+  margin-bottom: 32px;
 }
 
-.subtitle {
+.pageTitle {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin: 0 0 4px;
+}
+
+.pageSubtitle {
   font-size: 14px;
   color: var(--text-secondary);
-  margin: 0 0 28px;
+  margin: 0;
 }
 
-.list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+/* ── Sections ── */
+.section {
+  margin-bottom: 32px;
 }
 
-.card {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+.sectionTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 16px;
+}
+
+/* ── Active card ── */
+.activeCard {
   background: var(--bg-surface);
   border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 16px;
-  transition: border-color 0.15s;
+  border-radius: 20px;
+  padding: 28px 32px;
+  position: relative;
+  overflow: hidden;
+  border-left: 4px solid var(--lang-color);
 }
 
-.card.active {
-  border-color: var(--accent-primary);
+.activeGlow {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--lang-color) 10%, transparent), transparent 70%);
+  pointer-events: none;
 }
 
-.card.unavailable {
-  opacity: 0.4;
+.activeContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  gap: 24px;
 }
 
-.flag {
-  font-size: 32px;
+.activeLeft {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+}
+
+.activeFlag {
+  width: 56px;
+  height: 42px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   flex-shrink: 0;
 }
 
-.info {
+.activeLang {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0 0 2px;
+  letter-spacing: -0.3px;
+}
+
+.activeNative {
+  font-size: 14px;
+  color: var(--lang-color);
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+
+.activeDesc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.activeStats {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-shrink: 0;
+}
+
+.activeStat {
+  text-align: center;
+}
+
+.activeStatValue {
+  font-size: 24px;
+  font-weight: 800;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.activeStatLabel {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin: 2px 0 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.activeStatDivider {
+  width: 1px;
+  height: 40px;
+  background: var(--border);
+}
+
+/* ── Language grid ── */
+.langGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.langCard {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transition: border-color 0.2s, transform 0.15s;
+}
+
+.langCard:not(.unavailable):hover {
+  border-color: var(--lang-color);
+  transform: translateY(-3px);
+}
+
+.unavailable {
+  opacity: 0.5;
+}
+
+.langCardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.langFlag {
+  width: 44px;
+  height: 33px;
+  border-radius: 6px;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+.soonTag {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  padding: 3px 9px;
+  border-radius: 99px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.langCardBody {
   flex: 1;
 }
 
 .langName {
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 2px;
+}
+
+.langNative {
+  font-size: 13px;
+  color: var(--lang-color);
   font-weight: 600;
-  margin: 0 0 3px;
-  text-transform: capitalize;
+  margin: 0 0 8px;
 }
 
 .langDesc {
   font-size: 13px;
   color: var(--text-secondary);
   margin: 0;
+  line-height: 1.5;
 }
 
-.activeBadge {
-  background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
-  color: var(--accent-primary);
+.langCardBottom {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+
+.langMeta {
+  display: flex;
+  gap: 16px;
+}
+
+.langMetaItem {
   font-size: 12px;
-  font-weight: 600;
-  padding: 5px 10px;
-  border-radius: 99px;
-  border: 1px solid color-mix(in srgb, var(--accent-primary) 30%, transparent);
-  flex-shrink: 0;
+  color: var(--text-secondary);
+  font-weight: 500;
 }
 
 .switchBtn {
   background: var(--bg-elevated);
+  border: 1px solid var(--border);
   color: var(--text-primary);
-  border: none;
-  border-radius: 8px;
-  padding: 8px 14px;
+  border-radius: 10px;
+  padding: 10px;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  flex-shrink: 0;
-  transition: background 0.15s;
+  transition: border-color 0.15s, background 0.15s;
+  width: 100%;
+  text-align: center;
 }
 
 .switchBtn:hover {
-  background: var(--border);
+  border-color: var(--lang-color);
+  background: color-mix(in srgb, var(--lang-color) 8%, transparent);
 }
 
-.soonBadge {
-  background: var(--bg-elevated);
-  color: var(--text-secondary);
-  font-size: 12px;
-  padding: 5px 10px;
+.langComingSoon {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.comingBar {
+  width: 100%;
+  height: 4px;
+  background: var(--border);
   border-radius: 99px;
-  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.comingBar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30%;
+  height: 100%;
+  background: var(--lang-color);
+  border-radius: 99px;
+  opacity: 0.5;
+}
+
+.comingText {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .activeContent {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .activeStats {
+    width: 100%;
+    justify-content: flex-start;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 20px 16px;
+  }
+
+  .langGrid {
+    grid-template-columns: 1fr;
+  }
 }

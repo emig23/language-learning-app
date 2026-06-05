@@ -1,235 +1,446 @@
 .page {
-  padding: 24px 20px 24px;
+  padding: 36px 40px;
   color: var(--text-primary);
+  max-width: 1200px;
 }
 
-/* Header */
-.header {
+/* ── Top bar ── */
+.topBar {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
+  align-items: flex-start;
+  margin-bottom: 32px;
 }
 
-.greeting {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text-primary);
+.pageTitle {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin: 0 0 4px;
+}
+
+.pageSubtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
   margin: 0;
 }
 
-.logoutBtn {
+.streakPill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: color-mix(in srgb, var(--accent-orange) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-orange) 25%, transparent);
+  color: var(--accent-orange);
+  padding: 8px 16px;
+  border-radius: 99px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ── Stats row ── */
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.statCard {
   background: var(--bg-surface);
   border: 1px solid var(--border);
-  color: var(--text-secondary);
-  border-radius: 8px;
-  padding: 8px 12px;
+  border-radius: 16px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.statIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 16px;
-  cursor: pointer;
-  transition: color 0.15s;
+  font-weight: 700;
+  flex-shrink: 0;
 }
 
-.logoutBtn:hover {
+.statValue {
+  font-size: 20px;
+  font-weight: 700;
   color: var(--text-primary);
+  margin: 0;
+  line-height: 1.1;
 }
 
-/* Sections */
-.section {
-  margin-bottom: 28px;
+.statLabel {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin: 2px 0 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+/* ── Two columns ── */
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+  align-items: start;
+}
+
+/* Left column — Lessons */
+.colLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .sectionHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 14px;
 }
 
 .sectionTitle {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
-  color: var(--text-primary);
   margin: 0;
 }
 
-.viewAll {
+.lessonCount {
   font-size: 12px;
-  color: var(--accent-primary);
-  cursor: pointer;
+  color: var(--text-muted);
   font-weight: 500;
 }
 
-/* Course Cards */
-.courseGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.courseCard {
-  border-radius: 18px;
-  padding: 16px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  min-height: 120px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.15s;
-  border: none;
-}
-
-.courseCard:hover {
-  transform: translateY(-2px);
-}
-
-.courseTop {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.courseLanguage {
-  font-size: 15px;
-  font-weight: 700;
-  color: white;
-  margin: 0 0 3px;
-}
-
-.courseLessons {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.75);
-  margin: 0;
-}
-
-.courseFlag {
-  font-size: 36px;
-  position: absolute;
-  bottom: 10px;
-  right: 14px;
-  opacity: 0.85;
-}
-
-/* Stats */
-.statsGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-.statCard {
-  background: var(--bg-surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 14px 16px;
-}
-
-.statLabel {
-  font-size: 11px;
-  color: var(--text-secondary);
-  margin: 0 0 6px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-weight: 500;
-}
-
-.statValue {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin: 0;
-}
-
-/* Lesson List */
 .lessonList {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .lessonCard {
   background: var(--bg-surface);
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 14px 16px;
+  padding: 16px 18px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 16px;
   cursor: pointer;
-  transition: border-color 0.15s, transform 0.1s;
+  transition: border-color 0.15s, transform 0.1s, box-shadow 0.15s;
   text-align: left;
   width: 100%;
 }
 
 .lessonCard:hover:not(:disabled) {
   border-color: var(--accent-primary);
-  transform: translateX(3px);
+  transform: translateX(4px);
+  box-shadow: -4px 0 0 var(--accent-primary);
 }
 
 .lessonCard.locked {
-  opacity: 0.45;
+  opacity: 0.38;
   cursor: not-allowed;
 }
 
-.lessonLeft {
+.lessonIndex {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  flex-shrink: 0;
 }
 
-.difficultyDot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  flex-shrink: 0;
+.lessonCard:hover:not(:disabled) .lessonIndex {
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+.lessonBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.lessonMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .lessonTitle {
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-primary);
-  margin: 0 0 2px;
-}
-
-.lessonDifficulty {
-  font-size: 11px;
-  color: var(--text-secondary);
   margin: 0;
-  text-transform: capitalize;
 }
 
-.lessonRight {
+.lessonTags {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.diffTag {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 99px;
+  border: 1px solid;
+}
+
+.sentenceTag {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.progressBarTrack {
+  width: 100%;
+  height: 5px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  background: var(--accent-primary);
+  border-radius: 99px;
+  transition: width 0.3s ease;
+}
+
+.lessonAction {
   flex-shrink: 0;
 }
 
-.lockIcon {
-  font-size: 15px;
-}
-
 .doneBadge {
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 700;
   color: var(--accent-teal);
   background: color-mix(in srgb, var(--accent-teal) 12%, transparent);
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: 99px;
 }
 
-.progressBadge {
-  font-size: 12px;
-  font-weight: 600;
+.continueBadge {
+  font-size: 11px;
+  font-weight: 700;
   color: var(--accent-orange);
   background: color-mix(in srgb, var(--accent-orange) 12%, transparent);
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: 99px;
 }
 
 .startBadge {
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 700;
   color: var(--accent-primary);
   background: color-mix(in srgb, var(--accent-primary) 12%, transparent);
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: 99px;
+}
+
+.lockedLabel {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ── Right column ── */
+.colRight {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Course card */
+.courseCard {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  border-radius: 20px;
+  padding: 26px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.courseGlow {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
+  pointer-events: none;
+}
+
+.courseContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.courseInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.courseLabel {
+  font-size: 11px;
+  color: rgba(255,255,255,0.65);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+.courseLang {
+  font-size: 22px;
+  font-weight: 800;
+  color: white;
+  margin: 0;
+}
+
+.courseStat {
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  margin: 4px 0 0;
+}
+
+/* Activity card */
+.activityCard {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 22px 24px;
+}
+
+.activityTitle {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 18px;
+}
+
+.activityGrid {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 100px;
+  gap: 6px;
+}
+
+.activityDay {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.activityBar {
+  width: 100%;
+  max-width: 28px;
+  border-radius: 6px 6px 2px 2px;
+  transition: height 0.3s ease;
+  min-height: 4px;
+}
+
+.activityLabel {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.activityLabelActive {
+  color: var(--text-secondary);
+}
+
+/* Tip card */
+.tipCard {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.tipIcon {
+  font-size: 22px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.tipTitle {
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: var(--text-primary);
+}
+
+.tipText {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .statsRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .columns {
+    grid-template-columns: 1fr;
+  }
+
+  .colRight {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .tipCard {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 20px 16px;
+  }
+
+  .statsRow {
+    grid-template-columns: 1fr;
+  }
+
+  .colRight {
+    grid-template-columns: 1fr;
+  }
+
+  .tipCard {
+    grid-column: span 1;
+  }
 }

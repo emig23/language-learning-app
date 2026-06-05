@@ -20,7 +20,7 @@ const FEATURES = [
 ];
 
 const LANGUAGES = [
-  { flag: '🇪🇸', name: 'Spanish' },
+  { flag: 'ES', name: 'Spanish' },
   { flag: '🇫🇷', name: 'French' },
   { flag: '🇮🇹', name: 'Italian', soon: true },
   { flag: '🇩🇪', name: 'German', soon: true },

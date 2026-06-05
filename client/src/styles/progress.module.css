@@ -1,126 +1,415 @@
 .page {
-  padding: 24px 20px;
+  padding: 36px 40px;
   color: var(--text-primary);
+  max-width: 1200px;
 }
 
-.title {
-  font-size: 22px;
-  font-weight: 700;
-  margin: 0 0 24px;
-}
-
-.section {
+/* ── Top bar ── */
+.topBar {
   margin-bottom: 32px;
 }
 
-.sectionTitle {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin: 0 0 16px;
+.pageTitle {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin: 0 0 4px;
 }
 
-.streakCalendar {
-  display: flex;
-  justify-content: space-between;
+.pageSubtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ── Overview row ── */
+.overviewRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.overviewCard {
   background: var(--bg-surface);
   border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 16px;
-  margin-bottom: 10px;
+  border-radius: 16px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
-.dayCol {
+.overviewIcon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.overviewValue {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.overviewLabel {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin: 2px 0 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+/* ── Columns ── */
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+  align-items: start;
+}
+
+.colLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.colRight {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Shared card ── */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 24px;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cardTitle {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.cardBadge {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: 99px;
+}
+
+/* ── Streak ── */
+.streakGrid {
+  display: flex;
+  justify-content: space-between;
+}
+
+.streakDay {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
+  flex: 1;
 }
 
-.dayDot {
-  width: 28px;
-  height: 28px;
+.streakCircle {
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: var(--border);
-  transition: background 0.15s;
+  background: var(--bg-elevated);
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: transparent;
+  transition: all 0.2s;
 }
 
-.dayDot.active {
-  background: var(--accent-orange);
+.streakActive {
+  background: color-mix(in srgb, var(--accent-orange) 15%, transparent);
+  border-color: var(--accent-orange);
+  color: var(--accent-orange);
 }
 
-.dayLabel {
-  font-size: 11px;
+.streakLabel {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.streakLabelActive {
   color: var(--text-secondary);
 }
 
-.streakNote {
-  font-size: 13px;
-  color: var(--text-secondary);
-  margin: 0;
-  text-align: center;
+.streakMinutes {
+  font-size: 10px;
+  color: var(--accent-orange);
+  font-weight: 600;
 }
 
-.milestones {
+/* ── Milestones ── */
+.milestoneList {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .milestone {
   display: flex;
   align-items: center;
-  gap: 12px;
-  background: var(--bg-surface);
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 16px;
+  background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 14px 16px;
   opacity: 0.45;
+  transition: opacity 0.15s;
 }
 
-.milestone.achieved {
+.milestoneAchieved {
   opacity: 1;
-  border-color: color-mix(in srgb, var(--accent-secondary) 30%, transparent);
+  border-color: color-mix(in srgb, var(--accent-teal) 25%, transparent);
+}
+
+.milestoneLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
 }
 
 .milestoneIcon {
-  font-size: 20px;
+  font-size: 22px;
+  flex-shrink: 0;
 }
 
-.milestoneLabel {
-  flex: 1;
+.milestoneName {
   font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 2px;
+  color: var(--text-primary);
+}
+
+.milestoneDesc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.milestoneRight {
+  flex-shrink: 0;
+}
+
+.milestoneCheck {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent-teal) 15%, transparent);
+  color: var(--accent-teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.milestoneProgress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.milestoneBarTrack {
+  width: 60px;
+  height: 5px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.milestoneBarFill {
+  height: 100%;
+  background: var(--accent-primary);
+  border-radius: 99px;
+  transition: width 0.3s;
+}
+
+.milestoneCount {
+  font-size: 11px;
+  color: var(--text-muted);
   font-weight: 500;
+  white-space: nowrap;
 }
 
-.check {
-  color: var(--accent-secondary);
-  font-weight: 700;
-  font-size: 16px;
-}
-
+/* ── Studying card ── */
 .studyingCard {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  border-radius: 18px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.studyingGlow {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
+  pointer-events: none;
+}
+
+.studyingLabel {
+  font-size: 11px;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  margin: 0 0 14px;
+  position: relative;
+}
+
+.studyingMain {
   display: flex;
   align-items: center;
   gap: 14px;
-  background: var(--bg-surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 18px 16px;
+  position: relative;
 }
 
 .studyingFlag {
-  font-size: 36px;
+  width: 44px;
+  height: 33px;
+  border-radius: 6px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
 .studyingLang {
-  font-size: 16px;
-  font-weight: 600;
-  margin: 0 0 4px;
+  font-size: 20px;
+  font-weight: 800;
+  color: white;
+  margin: 0 0 2px;
 }
 
 .studyingStats {
   font-size: 13px;
-  color: var(--text-secondary);
+  color: rgba(255,255,255,0.7);
   margin: 0;
+}
+
+/* ── Recent lessons ── */
+.recentList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.recentItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: var(--bg-elevated);
+  border-radius: 10px;
+  gap: 12px;
+}
+
+.recentLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.recentDot {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.recentPerfect {
+  background: color-mix(in srgb, var(--accent-orange) 15%, transparent);
+  color: var(--accent-orange);
+}
+
+.recentTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.recentDate {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.recentScore {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.recentScorePerfect {
+  color: var(--accent-teal);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .overviewRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 20px 16px;
+  }
+
+  .overviewRow {
+    grid-template-columns: 1fr;
+  }
+
+  .streakCircle {
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
+  }
 }
