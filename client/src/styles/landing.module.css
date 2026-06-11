@@ -296,7 +296,10 @@
 }
 
 .langFlag {
-  font-size: 26px;
+  width: 36px;
+  height: 27px;
+  border-radius: 4px;
+  object-fit: cover;
 }
 
 .langName {

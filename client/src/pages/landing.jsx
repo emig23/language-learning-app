@@ -20,10 +20,10 @@ const FEATURES = [
 ];
 
 const LANGUAGES = [
-  { flag: 'ES', name: 'Spanish' },
-  { flag: '🇫🇷', name: 'French' },
-  { flag: '🇮🇹', name: 'Italian', soon: true },
-  { flag: '🇩🇪', name: 'German', soon: true },
+  { flag: 'es', name: 'Spanish' },
+  { flag: 'fr', name: 'French' },
+  { flag: 'it', name: 'Italian', soon: true },
+  { flag: 'de', name: 'German', soon: true },
 ];
 
 export default function Landing() {
@@ -35,8 +35,8 @@ export default function Landing() {
       {/* Navbar */}
       <nav className={styles.nav}>
         <div className={styles.navBrand}>
-          <span className={styles.navLogo}>𝕃</span>
-          <span className={styles.navName}>Language Learning App</span>
+          <span className={styles.navLogo}>𝕍</span>
+          <span className={styles.navName}>Voca</span>
         </div>
         <div className={styles.navActions}>
           <button className={styles.navLogin} onClick={() => navigate('/auth?tab=login')}>
@@ -57,7 +57,7 @@ export default function Landing() {
             <span className={styles.heroAccent}>Your language journey starts here</span>
           </h1>
           <p className={styles.heroSub}>
-            LanguageLearningApp teaches multiple languages through real sentences,
+            Voca teaches multiple languages through real sentences,
             instant feedback and lessons tailored for you.
           </p>
           <div className={styles.heroCtas}>
@@ -87,11 +87,15 @@ export default function Landing() {
 
       {/* Languages */}
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Pick your language</h2>
+        <h2 className={styles.sectionTitle}>Diverse language selection</h2>
         <div className={styles.langGrid}>
           {LANGUAGES.map(l => (
             <div key={l.name} className={`${styles.langCard} ${l.soon ? styles.langSoon : ''}`}>
-              <span className={styles.langFlag}>{l.flag}</span>
+              <img
+                className={styles.langFlag}
+                src={`https://flagcdn.com/48x36/${l.flag}.png`}
+                alt={l.name}
+              />
               <span className={styles.langName}>{l.name}</span>
               {l.soon && <span className={styles.soonTag}>Soon</span>}
             </div>
@@ -101,7 +105,7 @@ export default function Landing() {
 
       {/* Features */}
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Why LanguageLearningApp?</h2>
+        <h2 className={styles.sectionTitle}>Why Voca?</h2>
         <div className={styles.featureGrid}>
           {FEATURES.map(f => (
             <div key={f.title} className={styles.featureCard}>
@@ -115,8 +119,8 @@ export default function Landing() {
 
       {/* Footer */}
       <footer className={styles.footer}>
-        <span className={styles.navLogo}>𝕃</span>
-        <span className={styles.footerText}>© 2026 LanguageLearningApp. Built for learners.</span>
+        <span className={styles.navLogo}>𝕍</span>
+        <span className={styles.footerText}>© 2026 Voca. Built for learners.</span>
       </footer>
 
     </div>
