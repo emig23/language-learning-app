@@ -1,0 +1,182 @@
+[
+  {
+    "sentence": "El perro bebe agua.",
+    "translation": "The dog drinks water.",
+    "difficulty": "beginner",
+    "wordsUsed": ["el perro", "beber", "el agua"]
+  },
+  {
+    "sentence": "La niña come comida buena.",
+    "translation": "The girl eats good food.",
+    "difficulty": "beginner",
+    "wordsUsed": ["la niña", "comer", "la comida", "bueno"]
+  },
+  {
+    "sentence": "El gato es pequeño.",
+    "translation": "The cat is small.",
+    "difficulty": "beginner",
+    "wordsUsed": ["el gato", "ser", "pequeño"]
+  },
+  {
+    "sentence": "La casa es grande y bonita.",
+    "translation": "The house is big and pretty.",
+    "difficulty": "beginner",
+    "wordsUsed": ["la casa", "ser", "grande", "bonito"]
+  },
+  {
+    "sentence": "El hombre tiene un libro.",
+    "translation": "The man has a book.",
+    "difficulty": "beginner",
+    "wordsUsed": ["el hombre", "tener", "el libro"]
+  },
+  {
+    "sentence": "La mujer va a la escuela.",
+    "translation": "The woman goes to school.",
+    "difficulty": "beginner",
+    "wordsUsed": ["la mujer", "ir", "la escuela"]
+  },
+  {
+    "sentence": "El amigo habla rápido.",
+    "translation": "The friend speaks fast.",
+    "difficulty": "beginner",
+    "wordsUsed": ["el amigo", "hablar", "rápido"]
+  },
+  {
+    "sentence": "Ellos viven en la ciudad.",
+    "translation": "They live in the city.",
+    "difficulty": "beginner",
+    "wordsUsed": ["vivir", "la ciudad"]
+  },
+  {
+    "sentence": "El niño está feliz.",
+    "translation": "The boy is happy.",
+    "difficulty": "beginner",
+    "wordsUsed": ["el niño", "estar", "feliz"]
+  },
+  {
+    "sentence": "La mesa es vieja pero buena.",
+    "translation": "The table is old but good.",
+    "difficulty": "beginner",
+    "wordsUsed": ["la mesa", "ser", "viejo", "bueno"]
+  },
+  {
+    "sentence": "El médico sabe que el problema es difícil.",
+    "translation": "The doctor knows that the problem is difficult.",
+    "difficulty": "intermediate",
+    "wordsUsed": ["el médico", "saber", "el problema", "difícil"]
+  },
+  {
+    "sentence": "Ella quiere encontrar una solución posible.",
+    "translation": "She wants to find a possible solution.",
+    "difficulty": "intermediate",
+    "wordsUsed": ["querer", "encontrar", "la solución", "posible"]
+  },
+  {
+    "sentence": "El gobierno debe llevar a cabo una reunión importante.",
+    "translation": "The government must hold an important meeting.",
+    "difficulty": "intermediate",
+    "wordsUsed": ["el gobierno", "deber", "llevar", "la reunión", "importante"]
+  },
+  {
+    "sentence": "La empresa conoce el mercado muy bien.",
+    "translation": "The company knows the market very well.",
+    "difficulty": "intermediate",
+    "wordsUsed": ["la empresa", "conocer", "el mercado"]
+  },
+  {
+    "sentence": "Creo que la historia es interesante pero difícil.",
+    "translation": "I believe that the story is interesting but difficult.",
+    "difficulty": "intermediate",
+    "wordsUsed": ["creer", "la historia", "interesante", "difícil"]
+  },
+  {
+    "sentence": "Es necesario pensar en el próximo año.",
+    "translation": "It is necessary to think about the next year.",
+    "difficulty": "intermediate",
+    "wordsUsed": ["necesario", "pensar", "el año", "próximo"]
+  },
+  {
+    "sentence": "El desarrollo de la empresa es diferente este año.",
+    "translation": "The company's development is different this year.",
+    "difficulty": "intermediate",
+    "wordsUsed": ["el desarrollo", "la empresa", "diferente", "el año"]
+  },
+  {
+    "sentence": "Puedo sentir que el último problema fue fácil.",
+    "translation": "I can feel that the last problem was easy.",
+    "difficulty": "intermediate",
+    "wordsUsed": ["poder", "sentir", "último", "el problema", "fácil"]
+  },
+  {
+    "sentence": "La médica lleva el libro a la reunión.",
+    "translation": "The doctor brings the book to the meeting.",
+    "difficulty": "intermediate",
+    "wordsUsed": ["la médica", "llevar", "el libro", "la reunión"]
+  },
+  {
+    "sentence": "Es posible que el mercado cambie el próximo mes.",
+    "translation": "It is possible that the market changes next month.",
+    "difficulty": "intermediate",
+    "wordsUsed": ["posible", "el mercado", "próximo"]
+  },
+  {
+    "sentence": "La soberanía del ciudadano es un derecho imprescindible.",
+    "translation": "The citizen's sovereignty is an indispensable right.",
+    "difficulty": "advanced",
+    "wordsUsed": ["la soberanía", "el ciudadano", "imprescindible"]
+  },
+  {
+    "sentence": "El gobierno debe establecer políticas eficaces para consolidar el desarrollo.",
+    "translation": "The government must establish effective policies to consolidate development.",
+    "difficulty": "advanced",
+    "wordsUsed": ["el gobierno", "establecer", "eficaz", "consolidar", "el desarrollo"]
+  },
+  {
+    "sentence": "La paradoja es que el rendimiento mejora cuando se prescinde de métodos obsoletos.",
+    "translation": "The paradox is that performance improves when obsolete methods are dispensed with.",
+    "difficulty": "advanced",
+    "wordsUsed": ["la paradoja", "el rendimiento", "prescindir", "obsoleto"]
+  },
+  {
+    "sentence": "Es necesario reconocer los prejuicios inherentes en el sistema.",
+    "translation": "It is necessary to recognize the inherent prejudices in the system.",
+    "difficulty": "advanced",
+    "wordsUsed": ["necesario", "reconocer", "el prejuicio", "inherente"]
+  },
+  {
+    "sentence": "La conciencia del ciudadano puede trascender las fronteras del sindicato.",
+    "translation": "The citizen's conscience can transcend the boundaries of the labor union.",
+    "difficulty": "advanced",
+    "wordsUsed": ["la conciencia", "el ciudadano", "trascender", "el sindicato"]
+  },
+  {
+    "sentence": "Sostener una posición ambigua en tiempos de incertidumbre es un riesgo equívoco.",
+    "translation": "Maintaining an ambiguous position in times of uncertainty is a misleading risk.",
+    "difficulty": "advanced",
+    "wordsUsed": ["sostener", "ambiguo", "la incertidumbre", "equívoco"]
+  },
+  {
+    "sentence": "El patrimonio cultural constituye una base rigurosa para la identidad nacional.",
+    "translation": "Cultural heritage constitutes a rigorous foundation for national identity.",
+    "difficulty": "advanced",
+    "wordsUsed": ["el patrimonio", "constituir", "riguroso"]
+  },
+  {
+    "sentence": "Suponer que el problema es subjetivo puede manifestar una falta de conciencia.",
+    "translation": "Assuming that the problem is subjective can reveal a lack of awareness.",
+    "difficulty": "advanced",
+    "wordsUsed": ["suponer", "subjetivo", "manifestar", "la conciencia"]
+  },
+  {
+    "sentence": "La empresa debe proporcionar un análisis exhaustivo del rendimiento del mercado.",
+    "translation": "The company must provide an exhaustive analysis of market performance.",
+    "difficulty": "advanced",
+    "wordsUsed": ["la empresa", "proporcionar", "exhaustivo", "el rendimiento", "el mercado"]
+  },
+  {
+    "sentence": "Consolidar la soberanía requiere establecer instituciones eficaces y rigurosas.",
+    "translation": "Consolidating sovereignty requires establishing effective and rigorous institutions.",
+    "difficulty": "advanced",
+    "wordsUsed": ["consolidar", "la soberanía", "establecer", "eficaz", "riguroso"]
+  }
+]

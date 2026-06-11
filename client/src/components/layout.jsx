@@ -4,6 +4,7 @@ import styles from '../styles/layout.module.css';
 
 const NAV_ITEMS = [
   { to: '/dashboard',  label: 'Dashboard', icon: '⊞' },
+  { to: '/vocab',      label: 'Vocab',     icon: '✦' },
   { to: '/progress',   label: 'Progress',  icon: '◎' },
   { to: '/languages',  label: 'Languages', icon: '⊕' },
 ];
@@ -18,8 +19,8 @@ export default function Layout() {
       <aside className={styles.sidebar}>
         <div className={styles.sidebarTop}>
           <div className={styles.brand}>
-            <span className={styles.brandIcon}>𝕃</span>
-            <span className={styles.brandName}>Lingua</span>
+            <span className={styles.brandIcon}>𝕍</span>
+            <span className={styles.brandName}>Voca</span>
           </div>
 
           <nav className={styles.nav}>

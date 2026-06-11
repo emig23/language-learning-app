@@ -8,6 +8,7 @@ import Lesson from './pages/Lesson';
 import Progress from './pages/Progress';
 import Languages from './pages/Languages';
 import Layout from './components/Layout';
+import Vocab from './pages/Vocab';
 
 function ProtectedRoute({ children }) {
   const { user } = useAuth();
@@ -38,6 +39,7 @@ function AppRoutes() {
         <Route path="lesson/:id" element={<Lesson />} />
         <Route path="progress" element={<Progress />} />
         <Route path="languages" element={<Languages />} />
+        <Route path="vocab" element={<Vocab />} />
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />

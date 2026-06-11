@@ -1,21 +1,58 @@
+import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
 import styles from '../styles/dashboard.module.css';
 
-const MOCK_LESSONS = [
-  { id: '1', title: 'Greetings & Introductions', difficulty: 'beginner',     progress: 0, locked: false, sentences: 5 },
-  { id: '2', title: 'Food & Drink',              difficulty: 'beginner',     progress: 0,  locked: false, sentences: 5 },
-  { id: '3', title: 'Family & People',           difficulty: 'beginner',     progress: 0,   locked: false, sentences: 5 },
-  { id: '4', title: 'Work & School',             difficulty: 'intermediate', progress: 0,   locked: true,  sentences: 5 },
-  { id: '5', title: 'City & Travel',             difficulty: 'intermediate', progress: 0,   locked: true,  sentences: 5 },
-  { id: '6', title: 'Politics & Society',        difficulty: 'advanced',     progress: 0,   locked: true,  sentences: 5 },
-];
+import spanishSentences from '../data/spanishSentences.json';
+import frenchSentences from '../data/frenchSentences.json';
 
 const DIFFICULTY_COLOR = {
   beginner:     'var(--accent-teal)',
   intermediate: 'var(--accent-orange)',
   advanced:     'var(--accent-secondary)',
 };
+
+const DIFFICULTY_ORDER = ['beginner', 'intermediate', 'advanced'];
+
+// Group sentences into lessons of 5
+function buildLessons(sentences) {
+  const grouped = {};
+
+  sentences.forEach(s => {
+    if (!grouped[s.difficulty]) grouped[s.difficulty] = [];
+    grouped[s.difficulty].push(s);
+  });
+
+  const lessons = [];
+  let id = 1;
+
+  DIFFICULTY_ORDER.forEach(diff => {
+    const pool = grouped[diff] || [];
+    for (let i = 0; i < pool.length; i += 5) {
+      const chunk = pool.slice(i, i + 5);
+      if (chunk.length === 0) continue;
+      const lessonNum = Math.floor(i / 5) + 1;
+      lessons.push({
+        id: String(id++),
+        title: `${diff.charAt(0).toUpperCase() + diff.slice(1)} - Lesson ${lessonNum}`,
+        difficulty: diff,
+        sentences: chunk,
+        sentenceCount: chunk.length,
+        progress: 0,
+        locked: false,
+      });
+    }
+  });
+
+  // Lock intermediate & advanced until real progress tracking
+  lessons.forEach(l => {
+    if (l.difficulty !== 'beginner') {
+      l.locked = true;
+    }
+  });
+
+  return lessons;
+}
 
 function ProgressCircle({ percent, size = 52, stroke = 5, color = 'white' }) {
   const r = (size - stroke) / 2;
@@ -54,8 +91,11 @@ export default function Dashboard() {
   const { user } = useAuth();
   const navigate = useNavigate();
 
-  const completedLessons = MOCK_LESSONS.filter(l => l.progress === 100).length;
-  const inProgress = MOCK_LESSONS.filter(l => l.progress > 0 && l.progress < 100).length;
+  const sentences = user?.language === 'french' ? frenchSentences : spanishSentences;
+  const lessons = useMemo(() => buildLessons(sentences), [sentences]);
+
+  const completedLessons = lessons.filter(l => l.progress === 100).length;
+  const inProgress = lessons.filter(l => l.progress > 0 && l.progress < 100).length;
   const totalPoints = completedLessons * 50 + inProgress * 10;
   const lang = user?.language
     ? user.language.charAt(0).toUpperCase() + user.language.slice(1)
@@ -115,14 +155,14 @@ export default function Dashboard() {
         <div className={styles.colLeft}>
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>Lessons</h2>
-            <span className={styles.lessonCount}>{MOCK_LESSONS.length} total</span>
+            <span className={styles.lessonCount}>{lessons.length} total · {sentences.length} sentences</span>
           </div>
           <div className={styles.lessonList}>
-            {MOCK_LESSONS.map((lesson, i) => (
+            {lessons.map((lesson, i) => (
               <button
                 key={lesson.id}
                 className={`${styles.lessonCard} ${lesson.locked ? styles.locked : ''}`}
-                onClick={() => !lesson.locked && navigate(`/lesson/${lesson.id}`)}
+                onClick={() => !lesson.locked && navigate(`/lesson/${lesson.id}`, { state: { sentences: lesson.sentences } })}
                 disabled={lesson.locked}
               >
                 <div className={styles.lessonIndex}>
@@ -138,7 +178,7 @@ export default function Dashboard() {
                       >
                         {lesson.difficulty}
                       </span>
-                      <span className={styles.sentenceTag}>{lesson.sentences} sentences</span>
+                      <span className={styles.sentenceTag}>{lesson.sentenceCount} sentences</span>
                     </div>
                   </div>
                   {!lesson.locked && (
@@ -172,11 +212,11 @@ export default function Dashboard() {
                 <p className={styles.courseLabel}>Current Course</p>
                 <h3 className={styles.courseLang}>{lang}</h3>
                 <p className={styles.courseStat}>
-                  {completedLessons}/{MOCK_LESSONS.length} lessons completed
+                  {completedLessons}/{lessons.length} lessons completed
                 </p>
               </div>
               <ProgressCircle
-                percent={Math.round((completedLessons / MOCK_LESSONS.length) * 100)}
+                percent={lessons.length > 0 ? Math.round((completedLessons / lessons.length) * 100) : 0}
                 size={72}
                 stroke={6}
               />
@@ -208,7 +248,7 @@ export default function Dashboard() {
             </div>
           </div>
 
-          {/* Quick tip */}
+          {/* Tip */}
           <div className={styles.tipCard}>
             <span className={styles.tipIcon}>💡</span>
             <div>

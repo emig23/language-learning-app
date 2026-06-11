@@ -1,0 +1,702 @@
+[
+  {
+    "term": "el agua",
+    "translation": "water",
+    "partOfSpeech": "noun",
+    "gender": "feminine",
+    "difficulty": "beginner"
+  },
+  {
+    "term": "el hombre",
+    "translation": "man",
+    "partOfSpeech": "noun",
+    "gender": "masculine",
+    "difficulty": "beginner"
+  },
+  {
+    "term": "la mujer",
+    "translation": "woman",
+    "partOfSpeech": "noun",
+    "gender": "feminine",
+    "difficulty": "beginner"
+  },
+  {
+    "term": "el niño",
+    "translation": "boy/child",
+    "partOfSpeech": "noun",
+    "gender": "masculine",
+    "difficulty": "beginner"
+  },
+  {
+    "term": "la niña",
+    "translation": "girl/child",
+    "partOfSpeech": "noun",
+    "gender": "feminine",
+    "difficulty": "beginner"
+  },
+  {
+    "term": "la casa",
+    "translation": "house",
+    "partOfSpeech": "noun",
+    "gender": "feminine",
+    "difficulty": "beginner"
+  },
+  {
+    "term": "el libro",
+    "translation": "book",
+    "partOfSpeech": "noun",
+    "gender": "masculine",
+    "difficulty": "beginner"
+  },
+  {
+    "term": "la mesa",
+    "translation": "table",
+    "partOfSpeech": "noun",
+    "gender": "feminine",
+    "difficulty": "beginner"
+  },
+  {
+    "term": "el perro",
+    "translation": "dog",
+    "partOfSpeech": "noun",
+    "gender": "masculine",
+    "difficulty": "beginner"
+  },
+  {
+    "term": "el gato",
+    "translation": "cat",
+    "partOfSpeech": "noun",
+    "gender": "masculine",
+    "difficulty": "beginner"
+  },
+  {
+    "term": "la comida",
+    "translation": "food",
+    "partOfSpeech": "noun",
+    "gender": "feminine",
+    "difficulty": "beginner"
+  },
+  {
+    "term": "el tiempo",
+    "translation": "time/weather",
+    "partOfSpeech": "noun",
+    "gender": "masculine",
+    "difficulty": "beginner"
+  },
+  {
+    "term": "el día",
+    "translation": "day",
+    "partOfSpeech": "noun",
+    "gender": "masculine",
+    "difficulty": "beginner"
+  },
+  {
+    "term": "la noche",
+    "translation": "night",
+    "partOfSpeech": "noun",
+    "gender": "feminine",
+    "difficulty": "beginner"
+  },
+  {
+    "term": "el año",
+    "translation": "year",
+    "partOfSpeech": "noun",
+    "gender": "masculine",
+    "difficulty": "beginner"
+  },
+  {
+    "term": "la ciudad",
+    "translation": "city",
+    "partOfSpeech": "noun",
+    "gender": "feminine",
+    "difficulty": "beginner"
+  },
+  {
+    "term": "el trabajo",
+    "translation": "work/job",
+    "partOfSpeech": "noun",
+    "gender": "masculine",
+    "difficulty": "beginner"
+  },
+  {
+    "term": "la escuela",
+    "translation": "school",
+    "partOfSpeech": "noun",
+    "gender": "feminine",
+    "difficulty": "beginner"
+  },
+  {
+    "term": "el amigo",
+    "translation": "friend (m)",
+    "partOfSpeech": "noun",
+    "gender": "masculine",
+    "difficulty": "beginner"
+  },
+  {
+    "term": "la amiga",
+    "translation": "friend (f)",
+    "partOfSpeech": "noun",
+    "gender": "feminine",
+    "difficulty": "beginner"
+  },
+  {
+    "term": "ser",
+    "translation": "to be (permanent)",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "beginner"
+  },
+  {
+    "term": "estar",
+    "translation": "to be (temporary)",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "beginner"
+  },
+  {
+    "term": "tener",
+    "translation": "to have",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "beginner"
+  },
+  {
+    "term": "hacer",
+    "translation": "to do/make",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "beginner"
+  },
+  {
+    "term": "ir",
+    "translation": "to go",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "beginner"
+  },
+  {
+    "term": "venir",
+    "translation": "to come",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "beginner"
+  },
+  {
+    "term": "hablar",
+    "translation": "to speak",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "beginner"
+  },
+  {
+    "term": "comer",
+    "translation": "to eat",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "beginner"
+  },
+  {
+    "term": "beber",
+    "translation": "to drink",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "beginner"
+  },
+  {
+    "term": "vivir",
+    "translation": "to live",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "beginner"
+  },
+  {
+    "term": "grande",
+    "translation": "big/large",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "beginner"
+  },
+  {
+    "term": "pequeño",
+    "translation": "small",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "beginner"
+  },
+  {
+    "term": "bueno",
+    "translation": "good",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "beginner"
+  },
+  {
+    "term": "malo",
+    "translation": "bad",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "beginner"
+  },
+  {
+    "term": "nuevo",
+    "translation": "new",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "beginner"
+  },
+  {
+    "term": "viejo",
+    "translation": "old",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "beginner"
+  },
+  {
+    "term": "bonito",
+    "translation": "pretty/nice",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "beginner"
+  },
+  {
+    "term": "rápido",
+    "translation": "fast",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "beginner"
+  },
+  {
+    "term": "lento",
+    "translation": "slow",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "beginner"
+  },
+  {
+    "term": "feliz",
+    "translation": "happy",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "beginner"
+  },
+  {
+    "term": "el médico",
+    "translation": "doctor (m)",
+    "partOfSpeech": "noun",
+    "gender": "masculine",
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "la médica",
+    "translation": "doctor (f)",
+    "partOfSpeech": "noun",
+    "gender": "feminine",
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "el gobierno",
+    "translation": "government",
+    "partOfSpeech": "noun",
+    "gender": "masculine",
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "la historia",
+    "translation": "history/story",
+    "partOfSpeech": "noun",
+    "gender": "feminine",
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "el problema",
+    "translation": "problem",
+    "partOfSpeech": "noun",
+    "gender": "masculine",
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "la solución",
+    "translation": "solution",
+    "partOfSpeech": "noun",
+    "gender": "feminine",
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "el mercado",
+    "translation": "market",
+    "partOfSpeech": "noun",
+    "gender": "masculine",
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "la reunión",
+    "translation": "meeting",
+    "partOfSpeech": "noun",
+    "gender": "feminine",
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "el desarrollo",
+    "translation": "development",
+    "partOfSpeech": "noun",
+    "gender": "masculine",
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "la empresa",
+    "translation": "company/business",
+    "partOfSpeech": "noun",
+    "gender": "feminine",
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "conocer",
+    "translation": "to know (people)",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "saber",
+    "translation": "to know (facts)",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "poder",
+    "translation": "to be able to/can",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "querer",
+    "translation": "to want/love",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "deber",
+    "translation": "to owe/should",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "pensar",
+    "translation": "to think",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "creer",
+    "translation": "to believe",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "sentir",
+    "translation": "to feel",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "encontrar",
+    "translation": "to find/meet",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "llevar",
+    "translation": "to carry/wear",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "importante",
+    "translation": "important",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "necesario",
+    "translation": "necessary",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "posible",
+    "translation": "possible",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "difícil",
+    "translation": "difficult",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "fácil",
+    "translation": "easy",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "interesante",
+    "translation": "interesting",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "diferente",
+    "translation": "different",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "similar",
+    "translation": "similar",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "próximo",
+    "translation": "next/near",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "último",
+    "translation": "last/latest",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "intermediate"
+  },
+  {
+    "term": "el ciudadano",
+    "translation": "citizen (m)",
+    "partOfSpeech": "noun",
+    "gender": "masculine",
+    "difficulty": "advanced"
+  },
+  {
+    "term": "la ciudadana",
+    "translation": "citizen (f)",
+    "partOfSpeech": "noun",
+    "gender": "feminine",
+    "difficulty": "advanced"
+  },
+  {
+    "term": "el prejuicio",
+    "translation": "prejudice",
+    "partOfSpeech": "noun",
+    "gender": "masculine",
+    "difficulty": "advanced"
+  },
+  {
+    "term": "la conciencia",
+    "translation": "conscience/awareness",
+    "partOfSpeech": "noun",
+    "gender": "feminine",
+    "difficulty": "advanced"
+  },
+  {
+    "term": "el sindicato",
+    "translation": "labor union",
+    "partOfSpeech": "noun",
+    "gender": "masculine",
+    "difficulty": "advanced"
+  },
+  {
+    "term": "la soberanía",
+    "translation": "sovereignty",
+    "partOfSpeech": "noun",
+    "gender": "feminine",
+    "difficulty": "advanced"
+  },
+  {
+    "term": "el patrimonio",
+    "translation": "heritage/assets",
+    "partOfSpeech": "noun",
+    "gender": "masculine",
+    "difficulty": "advanced"
+  },
+  {
+    "term": "la incertidumbre",
+    "translation": "uncertainty",
+    "partOfSpeech": "noun",
+    "gender": "feminine",
+    "difficulty": "advanced"
+  },
+  {
+    "term": "el rendimiento",
+    "translation": "performance/yield",
+    "partOfSpeech": "noun",
+    "gender": "masculine",
+    "difficulty": "advanced"
+  },
+  {
+    "term": "la paradoja",
+    "translation": "paradox",
+    "partOfSpeech": "noun",
+    "gender": "feminine",
+    "difficulty": "advanced"
+  },
+  {
+    "term": "sostener",
+    "translation": "to sustain/hold",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "advanced"
+  },
+  {
+    "term": "suponer",
+    "translation": "to suppose/assume",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "advanced"
+  },
+  {
+    "term": "establecer",
+    "translation": "to establish",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "advanced"
+  },
+  {
+    "term": "reconocer",
+    "translation": "to recognize",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "advanced"
+  },
+  {
+    "term": "manifestar",
+    "translation": "to manifest/show",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "advanced"
+  },
+  {
+    "term": "proporcionar",
+    "translation": "to provide",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "advanced"
+  },
+  {
+    "term": "constituir",
+    "translation": "to constitute",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "advanced"
+  },
+  {
+    "term": "trascender",
+    "translation": "to transcend",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "advanced"
+  },
+  {
+    "term": "consolidar",
+    "translation": "to consolidate",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "advanced"
+  },
+  {
+    "term": "prescindir",
+    "translation": "to do without/dispense",
+    "partOfSpeech": "verb",
+    "gender": null,
+    "difficulty": "advanced"
+  },
+  {
+    "term": "inherente",
+    "translation": "inherent",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "advanced"
+  },
+  {
+    "term": "ambiguo",
+    "translation": "ambiguous",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "advanced"
+  },
+  {
+    "term": "eficaz",
+    "translation": "effective/efficient",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "advanced"
+  },
+  {
+    "term": "exhaustivo",
+    "translation": "exhaustive/thorough",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "advanced"
+  },
+  {
+    "term": "obsoleto",
+    "translation": "obsolete",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "advanced"
+  },
+  {
+    "term": "imprescindible",
+    "translation": "indispensable",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "advanced"
+  },
+  {
+    "term": "subjetivo",
+    "translation": "subjective",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "advanced"
+  },
+  {
+    "term": "riguroso",
+    "translation": "rigorous",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "advanced"
+  },
+  {
+    "term": "equívoco",
+    "translation": "equivocal/misleading",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "advanced"
+  },
+  {
+    "term": "contundente",
+    "translation": "forceful/convincing",
+    "partOfSpeech": "adjective",
+    "gender": null,
+    "difficulty": "advanced"
+  }
+]
