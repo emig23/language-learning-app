@@ -10,8 +10,6 @@ const LANGUAGES = [
     flag: 'es',
     native: 'Español',
     description: 'Spoken by 500M+ people worldwide',
-    learners: '30M+ learners',
-    difficulty: 'Beginner friendly',
     color: '#e8547a',
     facts: ['2nd most spoken language', 'Official in 21 countries', 'Easy grammar for English speakers'],
   },
@@ -21,8 +19,6 @@ const LANGUAGES = [
     flag: 'fr',
     native: 'Français',
     description: 'The language of art, cuisine & diplomacy',
-    learners: '20M+ learners',
-    difficulty: 'Moderate',
     color: '#c45ecf',
     facts: ['Spoken on 5 continents', 'Official UN language', 'Gateway to European culture'],
   },
@@ -43,7 +39,8 @@ export default function LanguageSelect() {
       <div className={styles.bgGlow} />
 
       <nav className={styles.nav}>
-        <span className={styles.navLogo}>𝕃 Lingua</span>
+        <span className={styles.navLogo}>𝕍</span>
+        <span className={styles.brandName}> Voca</span>
       </nav>
 
       <div className={styles.content}>
@@ -54,7 +51,7 @@ export default function LanguageSelect() {
             you want to <span className={styles.accent}>learn?</span>
           </h1>
           <p className={styles.subtitle}>
-            Choose your first language. You can add more later.
+            Choose your first language
           </p>
         </div>
 
@@ -76,7 +73,7 @@ export default function LanguageSelect() {
                   src={`https://flagcdn.com/64x48/${lang.flag}.png`}
                   alt={lang.label}
                 />
-                <div className={styles.diffBadge}>{lang.difficulty}</div>
+
               </div>
 
               <div className={styles.cardMid}>
@@ -85,9 +82,7 @@ export default function LanguageSelect() {
                 <p className={styles.langDesc}>{lang.description}</p>
               </div>
 
-              <div className={styles.cardStats}>
-                <span className={styles.stat}>👥 {lang.learners}</span>
-              </div>
+
 
               <ul className={styles.facts}>
                 {lang.facts.map(f => (

@@ -46,15 +46,15 @@ export default function Auth() {
         <div className={styles.leftGlow} />
         <div className={styles.leftContent}>
           <div className={styles.brand}>
-            <span className={styles.brandIcon}>𝕃</span>
-            <span className={styles.brandName}>Lingua</span>
+            <span className={styles.brandIcon}>𝕍</span>
+            <span className={styles.brandName}>Voca</span>
           </div>
           <h2 className={styles.leftTitle}>
             Start speaking a<br />
             new language <span className={styles.leftAccent}>today</span>
           </h2>
           <p className={styles.leftSub}>
-            Join thousands of learners building real skills, one sentence at a time.
+            Start building real skills, one sentence at a time.
           </p>
           <div className={styles.featureList}>
             {FEATURES.map(f => (
