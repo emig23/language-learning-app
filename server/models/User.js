@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+
     username: {
         type: String,
         required: true,
@@ -15,8 +20,12 @@ const userSchema = new mongoose.Schema({
 
     hashPassword: {
         type: String,
-        required: true,
-        unique: true
+        required: true
+    },
+
+    language: {
+        type: String,
+        default: null
     },
 
     streakCount: {
@@ -25,9 +34,9 @@ const userSchema = new mongoose.Schema({
     },
 
     currLevel: {
-        type: String
+        type: String,
+        default: 'Beginner'
     }
-    
-})
+}, { timestamps: true });
 
 module.exports = mongoose.model('User', userSchema);

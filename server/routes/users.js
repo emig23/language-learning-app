@@ -1,51 +1,47 @@
 const express = require('express');
-const router = express.Router(); 
-const User = require('../models/User')
-const authMiddleware = require('../middleware/authMiddleware')
+const router = express.Router();
+const authMiddleware = require('../middleware/authMiddleware');
 
-router.get('/userProfile', authMiddleware, async(req, res) => {
-    try {
-        const user = await User.findById(req.user.userId).select('-hashPassword')
-        if (!user) {
-            return res.status(404).json({error: 'User not found'})
+// Get current user profile
+router.get('/me', authMiddleware, async (req, res) => {
+    res.json({
+        user: {
+            id: req.user._id,
+            name: req.user.name,
+            email: req.user.email,
+            language: req.user.language,
+            streakCount: req.user.streakCount,
+            currLevel: req.user.currLevel
         }
-        res.status(200).json({user})
-    } catch (error) {
-        res.status(500).json({error: 'Something went wrong'})
-    }
-})
+    });
+});
 
-router.patch('/userProfile', authMiddleware, async(req, res) => {
+// Update selected language
+router.put('/language', authMiddleware, async (req, res) => {
     try {
-        const {username, currLevel} = req.body
+        const { language } = req.body;
 
-        const updatedUser = await User.findByIdAndUpdate(
-            req.user.userId,
-            { username, currLevel },
-            { new: true}
-        ).select('-hashPassword')
-
-        if (!updatedUser) {
-            return res.status(404).json({error: 'User not found'})
+        if (!language) {
+            return res.status(400).json({ error: 'Language is required' });
         }
 
-        res.status(200).json({user: updatedUser})
+        req.user.language = language;
+        await req.user.save();
 
+        res.json({
+            user: {
+                id: req.user._id,
+                name: req.user.name,
+                email: req.user.email,
+                language: req.user.language,
+                streakCount: req.user.streakCount,
+                currLevel: req.user.currLevel
+            }
+        });
     } catch (error) {
-        res.status(500).json({error: 'Something went wrong'})
+        console.log(error);
+        res.status(500).json({ error: 'Something went wrong' });
     }
-})
-
-router.get('/userProfile/streak', authMiddleware, async(req, res) => {
-    try {
-        const user = await User.findById(req.user.userId)
-        if (!user) {
-            return res.status(404).json({error: 'User not found'})
-        }
-        res.status(200).json({streakCount: user.streakCount})
-    } catch (error) {
-        res.status(500).json({error: 'Something went wrong'})
-    }
-})
+});
 
 module.exports = router;

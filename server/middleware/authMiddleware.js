@@ -1,21 +1,26 @@
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+const User = require('../models/User');
 
-const authMiddleware = (req, res, next) => {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
+const authMiddleware = async (req, res, next) => {
+    try {
+        const header = req.headers.authorization;
+        if (!header || !header.startsWith('Bearer ')) {
+            return res.status(401).json({ error: 'No token provided' });
+        }
 
-    if (!token) {
-        return res.sendStatus(401);
-    }
+        const token = header.split(' ')[1];
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const user = await User.findById(decoded.userId).select('-hashPassword');
 
-    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-        if (err) {
-            return res.sendStatus(403);
+        if (!user) {
+            return res.status(401).json({ error: 'User not found' });
         }
 
         req.user = user;
         next();
-    });
+    } catch (error) {
+        res.status(401).json({ error: 'Invalid token' });
+    }
 };
 
-module.exports = authMiddleware
+module.exports = authMiddleware;
