@@ -27,7 +27,6 @@ function shuffle(arr) {
 function buildExercises(sentences, words) {
   const exercises = [];
 
-  // Each sentence gets TWO exercises (translate + fill-in-blank)
   sentences.forEach(s => {
     // Translate
     exercises.push({
@@ -61,7 +60,7 @@ function buildExercises(sentences, words) {
     });
   }
 
-  return exercises;
+  return shuffle(exercises);
 }
 
 // ─── Translate Exercise ───
@@ -73,18 +72,13 @@ function TranslateExercise({ exercise, onComplete }) {
     if (!input.trim()) return;
     const correct = normalize(input) === normalize(exercise.answer);
     setFeedback(correct ? 'correct' : 'incorrect');
-    if (correct) onComplete(true, false);
-  };
-
-  const handleNext = () => {
-    if (feedback === 'incorrect') onComplete(false, false);
   };
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       if (feedback === null && input.trim()) handleCheck();
-      else if (feedback !== null) handleNext();
+      else if (feedback !== null) onComplete(feedback === 'correct');
     }
   };
 
@@ -111,10 +105,8 @@ function TranslateExercise({ exercise, onComplete }) {
         )}
         {feedback === null ? (
           <button className={styles.btnPrimary} onClick={handleCheck} disabled={!input.trim()}>Check Answer</button>
-        ) : feedback === 'correct' ? (
-          <button className={styles.btnPrimary} onClick={() => onComplete(true, true)}>Continue →</button>
         ) : (
-          <button className={styles.btnPrimary} onClick={handleNext}>Continue →</button>
+          <button className={styles.btnPrimary} onClick={() => onComplete(feedback === 'correct')}>Continue →</button>
         )}
       </div>
     </>
@@ -130,18 +122,13 @@ function FillBlankExercise({ exercise, onComplete }) {
     if (!input.trim()) return;
     const correct = normalize(input) === normalize(exercise.answer);
     setFeedback(correct ? 'correct' : 'incorrect');
-    if (correct) onComplete(true, false);
-  };
-
-  const handleNext = () => {
-    if (feedback === 'incorrect') onComplete(false, false);
   };
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       if (feedback === null && input.trim()) handleCheck();
-      else if (feedback !== null) handleNext();
+      else if (feedback !== null) onComplete(feedback === 'correct');
     }
   };
 
@@ -167,10 +154,8 @@ function FillBlankExercise({ exercise, onComplete }) {
         )}
         {feedback === null ? (
           <button className={styles.btnPrimary} onClick={handleCheck} disabled={!input.trim()}>Check Answer</button>
-        ) : feedback === 'correct' ? (
-          <button className={styles.btnPrimary} onClick={() => onComplete(true, true)}>Continue →</button>
         ) : (
-          <button className={styles.btnPrimary} onClick={handleNext}>Continue →</button>
+          <button className={styles.btnPrimary} onClick={() => onComplete(feedback === 'correct')}>Continue →</button>
         )}
       </div>
     </>
@@ -207,7 +192,7 @@ function MatchExercise({ exercise, onComplete }) {
         setSelected(null);
         setWrong(null);
         if (newMatched.length === exercise.pairs.length) {
-          setTimeout(() => onComplete(true, true), 500);
+          setTimeout(() => onComplete(true), 500);
         }
       } else {
         setWrong({ termIdx, transIdx });
@@ -299,14 +284,12 @@ export default function Lesson() {
   const current = exercises[index];
   const progress = exercises.length > 0 ? ((index) / exercises.length) * 100 : 0;
 
-  const handleExerciseComplete = (correct, advance) => {
+  const handleExerciseComplete = (correct) => {
     if (correct) setScore(s => s + 1);
-    if (advance || !correct) {
-      if (index + 1 >= exercises.length) {
-        setDone(true);
-      } else {
-        setIndex(i => i + 1);
-      }
+    if (index + 1 >= exercises.length) {
+      setDone(true);
+    } else {
+      setIndex(i => i + 1);
     }
   };
 
