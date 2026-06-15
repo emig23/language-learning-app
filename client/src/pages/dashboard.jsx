@@ -3,9 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
 import styles from '../styles/dashboard.module.css';
 
-import spanishSentences from '../data/spanishSentences.json';
-import frenchSentences from '../data/frenchSentences.json';
-
 const DIFFICULTY_COLOR = {
   beginner:     'var(--accent-teal)',
   intermediate: 'var(--accent-orange)',
@@ -79,31 +76,57 @@ function ProgressBar({ percent }) {
   );
 }
 
+function LoadingSpinner({ message }) {
+  return (
+    <div className={styles.loading}>
+      <div className={styles.spinner} />
+      <p>{message || 'Loading...'}</p>
+    </div>
+  );
+}
+
 export default function Dashboard() {
   const { user, token } = useAuth();
   const navigate = useNavigate();
+  const [sentences, setSentences] = useState([]);
   const [completedMap, setCompletedMap] = useState({});
   const [stats, setStats] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!token || !user?.language) return;
+    if (!token || !user?.language) { setLoading(false); return; }
 
-    fetch(`/progress?language=${user.language}`, {
-      headers: { Authorization: `Bearer ${token}` }
-    })
-      .then(res => res.json())
-      .then(data => setCompletedMap(data.completedLessons || {}))
-      .catch(err => console.error('Failed to load progress:', err));
+    const fetchAll = async () => {
+      try {
+        const [sentRes, progRes, statsRes] = await Promise.all([
+          fetch(`/api/sentences?language=${user.language}`, {
+            headers: { Authorization: `Bearer ${token}` }
+          }),
+          fetch(`/progress?language=${user.language}`, {
+            headers: { Authorization: `Bearer ${token}` }
+          }),
+          fetch('/progress/stats', {
+            headers: { Authorization: `Bearer ${token}` }
+          })
+        ]);
 
-    fetch('/progress/stats', {
-      headers: { Authorization: `Bearer ${token}` }
-    })
-      .then(res => res.json())
-      .then(data => setStats(data))
-      .catch(err => console.error('Failed to load stats:', err));
+        const sentData = await sentRes.json();
+        const progData = await progRes.json();
+        const statsData = await statsRes.json();
+
+        setSentences(sentData.sentences || []);
+        setCompletedMap(progData.completedLessons || {});
+        setStats(statsData);
+      } catch (err) {
+        console.error('Failed to load dashboard data:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAll();
   }, [token, user?.language]);
 
-  const sentences = user?.language === 'french' ? frenchSentences : spanishSentences;
   const lessons = useMemo(() => buildLessons(sentences, completedMap), [sentences, completedMap]);
 
   const completedLessons = lessons.filter(l => l.progress === 100).length;
@@ -125,6 +148,10 @@ export default function Dashboard() {
   ];
   const maxCount = Math.max(1, ...weeklyActivity.map(d => d.count));
   const weekTotal = weeklyActivity.reduce((sum, d) => sum + d.count, 0);
+
+  if (loading) {
+    return <LoadingSpinner message="Loading your dashboard..." />;
+  }
 
   return (
     <div className={styles.page}>
@@ -175,6 +202,7 @@ export default function Dashboard() {
         <div className={styles.colLeft}>
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>Lessons</h2>
+            <span className={styles.lessonCount}>{lessons.length} total · {sentences.length} sentences</span>
           </div>
           <div className={styles.lessonList}>
             {lessons.map((lesson, i) => (
@@ -194,6 +222,7 @@ export default function Dashboard() {
                       <span className={styles.diffTag} style={{ color: DIFFICULTY_COLOR[lesson.difficulty], borderColor: DIFFICULTY_COLOR[lesson.difficulty] }}>
                         {lesson.difficulty}
                       </span>
+                      <span className={styles.sentenceTag}>{lesson.sentenceCount} sentences</span>
                     </div>
                   </div>
                   {!lesson.locked && <ProgressBar percent={lesson.progress} />}
@@ -228,9 +257,7 @@ export default function Dashboard() {
           <div className={styles.activityCard}>
             <div className={styles.activityHeader}>
               <h3 className={styles.activityTitle}>This Week</h3>
-              <span className={styles.activityTotal}>
-                {weekTotal} {weekTotal === 1 ? 'lesson' : 'lessons'}
-              </span>
+              <span className={styles.activityTotal}>{weekTotal} {weekTotal === 1 ? 'lesson' : 'lessons'}</span>
             </div>
             <div className={styles.activityGrid}>
               {weeklyActivity.map(d => (

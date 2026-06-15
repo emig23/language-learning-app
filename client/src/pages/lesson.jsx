@@ -1,10 +1,7 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
 import styles from '../styles/lesson.module.css';
-
-import spanishWords from '../data/spanish.json';
-import frenchWords from '../data/french.json';
 
 function normalize(str) {
   return str.trim().toLowerCase()
@@ -236,6 +233,15 @@ function FeedbackBox({ feedback, answer }) {
   );
 }
 
+function LoadingSpinner({ message }) {
+  return (
+    <div className={styles.loadingPage}>
+      <div className={styles.loadingSpinner} />
+      <p>{message || 'Loading...'}</p>
+    </div>
+  );
+}
+
 export default function Lesson() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -243,8 +249,25 @@ export default function Lesson() {
   const { user, token } = useAuth();
 
   const sentences = location.state?.sentences || [];
-  const words = user?.language === 'french' ? frenchWords : spanishWords;
-  const exercises = useMemo(() => buildExercises(sentences, words), [sentences, words]);
+  const [words, setWords] = useState([]);
+  const [wordsLoaded, setWordsLoaded] = useState(false);
+
+  // Fetch words from API for match exercises
+  useEffect(() => {
+    if (!token || !user?.language) { setWordsLoaded(true); return; }
+
+    fetch(`/api/words?language=${user.language}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(res => res.json())
+      .then(data => { setWords(data.words || []); setWordsLoaded(true); })
+      .catch(err => { console.error('Failed to load words:', err); setWordsLoaded(true); });
+  }, [token, user?.language]);
+
+  const exercises = useMemo(() => {
+    if (!wordsLoaded) return [];
+    return buildExercises(sentences, words);
+  }, [sentences, words, wordsLoaded]);
 
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -254,7 +277,6 @@ export default function Lesson() {
   const current = exercises[index];
   const progress = exercises.length > 0 ? ((index) / exercises.length) * 100 : 0;
 
-  // Save progress to backend when lesson is done
   const saveProgress = async (finalScore) => {
     if (saved) return;
     try {
@@ -289,6 +311,12 @@ export default function Lesson() {
     }
   };
 
+  // Loading words
+  if (!wordsLoaded) {
+    return <LoadingSpinner message="Preparing your lesson..." />;
+  }
+
+  // No data
   if (exercises.length === 0) {
     return (
       <div className={styles.page}>
@@ -304,6 +332,7 @@ export default function Lesson() {
     );
   }
 
+  // Results
   if (done) {
     const percent = Math.round((score / exercises.length) * 100);
     return (

@@ -1,18 +1,35 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useAuth } from '../context/authContext';
 import styles from '../styles/vocab.module.css';
 
-import spanishWords from '../data/spanish.json';
-import frenchWords from '../data/french.json';
-
 const DIFFICULTY_ORDER = ['beginner', 'intermediate', 'advanced'];
 
+function LoadingSpinner({ message }) {
+  return (
+    <div className={styles.loading}>
+      <div className={styles.spinner} />
+      <p>{message || 'Loading...'}</p>
+    </div>
+  );
+}
+
 export default function Vocab() {
-  const { user } = useAuth();
+  const { user, token } = useAuth();
+  const [allWords, setAllWords] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('all');
   const [search, setSearch] = useState('');
 
-  const allWords = user?.language === 'french' ? frenchWords : spanishWords;
+  useEffect(() => {
+    if (!token || !user?.language) { setLoading(false); return; }
+
+    fetch(`/api/words?language=${user.language}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(res => res.json())
+      .then(data => { setAllWords(data.words || []); setLoading(false); })
+      .catch(err => { console.error('Failed to load words:', err); setLoading(false); });
+  }, [token, user?.language]);
 
   const filtered = useMemo(() => {
     let words = allWords;
@@ -39,6 +56,10 @@ export default function Vocab() {
     ? user.language.charAt(0).toUpperCase() + user.language.slice(1)
     : 'Language';
 
+  if (loading) {
+    return <LoadingSpinner message="Loading vocabulary..." />;
+  }
+
   return (
     <div className={styles.page}>
 
@@ -49,7 +70,6 @@ export default function Vocab() {
         </div>
       </header>
 
-      {/* Filters */}
       <div className={styles.controls}>
         <div className={styles.filters}>
           {['all', ...DIFFICULTY_ORDER].map(f => (
@@ -72,7 +92,6 @@ export default function Vocab() {
         />
       </div>
 
-      {/* Word list */}
       {filtered.length === 0 ? (
         <div className={styles.empty}>
           <p>No words found matching your search.</p>
