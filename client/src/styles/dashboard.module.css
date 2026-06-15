@@ -333,10 +333,26 @@
   padding: 22px 24px;
 }
 
+.activityHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
 .activityTitle {
   font-size: 15px;
   font-weight: 700;
-  margin: 0 0 18px;
+  margin: 0;
+}
+
+.activityTotal {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-primary);
+  background: color-mix(in srgb, var(--accent-primary) 10%, transparent);
+  padding: 4px 10px;
+  border-radius: 99px;
 }
 
 .activityGrid {
@@ -355,6 +371,12 @@
   gap: 8px;
   height: 100%;
   justify-content: flex-end;
+}
+
+.activityCount {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-primary);
 }
 
 .activityBar {
@@ -422,6 +444,9 @@
     gap: 14px;
   }
 
+  .tipCard {
+    grid-column: span 2;
+  }
 }
 
 @media (max-width: 600px) {

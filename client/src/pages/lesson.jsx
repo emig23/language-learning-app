@@ -6,7 +6,6 @@ import styles from '../styles/lesson.module.css';
 import spanishWords from '../data/spanish.json';
 import frenchWords from '../data/french.json';
 
-// Strip punctuation AND accent marks for lenient comparison
 function normalize(str) {
   return str.trim().toLowerCase()
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
@@ -23,19 +22,16 @@ function shuffle(arr) {
   return a;
 }
 
-// Build 8-12 mixed exercises from sentences + vocab
 function buildExercises(sentences, words) {
   const exercises = [];
 
   sentences.forEach(s => {
-    // Translate
     exercises.push({
       type: 'translate',
       sentence: s.sentence,
       answer: s.translation,
     });
 
-    // Fill in the blank
     const sentenceWords = s.sentence.replace(/[.,!?¿¡]/g, '').split(' ').filter(w => w.length > 2);
     if (sentenceWords.length > 0) {
       const blankWord = sentenceWords[Math.floor(Math.random() * sentenceWords.length)];
@@ -49,7 +45,6 @@ function buildExercises(sentences, words) {
     }
   });
 
-  // Add 2-3 match rounds spread throughout
   const matchCount = words.length >= 4 ? Math.min(3, Math.max(2, Math.floor(exercises.length / 4))) : 0;
   for (let m = 0; m < matchCount; m++) {
     const picked = shuffle(words).slice(0, 4);
@@ -63,7 +58,6 @@ function buildExercises(sentences, words) {
   return shuffle(exercises);
 }
 
-// ─── Translate Exercise ───
 function TranslateExercise({ exercise, onComplete }) {
   const [input, setInput] = useState('');
   const [feedback, setFeedback] = useState(null);
@@ -100,9 +94,7 @@ function TranslateExercise({ exercise, onComplete }) {
           rows={2}
           autoFocus
         />
-        {feedback && (
-          <FeedbackBox feedback={feedback} answer={exercise.answer} />
-        )}
+        {feedback && <FeedbackBox feedback={feedback} answer={exercise.answer} />}
         {feedback === null ? (
           <button className={styles.btnPrimary} onClick={handleCheck} disabled={!input.trim()}>Check Answer</button>
         ) : (
@@ -113,7 +105,6 @@ function TranslateExercise({ exercise, onComplete }) {
   );
 }
 
-// ─── Fill in the Blank ───
 function FillBlankExercise({ exercise, onComplete }) {
   const [input, setInput] = useState('');
   const [feedback, setFeedback] = useState(null);
@@ -149,9 +140,7 @@ function FillBlankExercise({ exercise, onComplete }) {
           disabled={feedback !== null}
           autoFocus
         />
-        {feedback && (
-          <FeedbackBox feedback={feedback} answer={exercise.answer} />
-        )}
+        {feedback && <FeedbackBox feedback={feedback} answer={exercise.answer} />}
         {feedback === null ? (
           <button className={styles.btnPrimary} onClick={handleCheck} disabled={!input.trim()}>Check Answer</button>
         ) : (
@@ -162,7 +151,6 @@ function FillBlankExercise({ exercise, onComplete }) {
   );
 }
 
-// ─── Match Exercise ───
 function MatchExercise({ exercise, onComplete }) {
   const [selected, setSelected] = useState(null);
   const [matched, setMatched] = useState([]);
@@ -175,7 +163,6 @@ function MatchExercise({ exercise, onComplete }) {
 
   const handleSelect = (side, index, originalIndex) => {
     if (matched.includes(side === 'term' ? index : originalIndex)) return;
-
     if (selected === null) {
       setSelected({ side, index, originalIndex });
       setWrong(null);
@@ -185,7 +172,6 @@ function MatchExercise({ exercise, onComplete }) {
     } else {
       const termIdx = side === 'term' ? index : selected.originalIndex;
       const transIdx = side === 'trans' ? originalIndex : selected.originalIndex;
-
       if (termIdx === transIdx) {
         const newMatched = [...matched, termIdx];
         setMatched(newMatched);
@@ -210,32 +196,20 @@ function MatchExercise({ exercise, onComplete }) {
       <div className={styles.matchGrid}>
         <div className={styles.matchCol}>
           {exercise.pairs.map((p, i) => (
-            <button
-              key={`t-${i}`}
-              className={`${styles.matchTile}
-                ${matched.includes(i) ? styles.matchDone : ''}
-                ${selected?.side === 'term' && selected?.index === i ? styles.matchSelected : ''}
-                ${wrong?.termIdx === i ? styles.matchWrong : ''}`}
+            <button key={`t-${i}`}
+              className={`${styles.matchTile} ${matched.includes(i) ? styles.matchDone : ''} ${selected?.side === 'term' && selected?.index === i ? styles.matchSelected : ''} ${wrong?.termIdx === i ? styles.matchWrong : ''}`}
               onClick={() => handleSelect('term', i, i)}
               disabled={matched.includes(i)}
-            >
-              {p.term}
-            </button>
+            >{p.term}</button>
           ))}
         </div>
         <div className={styles.matchCol}>
           {shuffledTranslations.map((p, i) => (
-            <button
-              key={`tr-${i}`}
-              className={`${styles.matchTile}
-                ${matched.includes(p.originalIndex) ? styles.matchDone : ''}
-                ${selected?.side === 'trans' && selected?.index === i ? styles.matchSelected : ''}
-                ${wrong?.transIdx === p.originalIndex ? styles.matchWrong : ''}`}
+            <button key={`tr-${i}`}
+              className={`${styles.matchTile} ${matched.includes(p.originalIndex) ? styles.matchDone : ''} ${selected?.side === 'trans' && selected?.index === i ? styles.matchSelected : ''} ${wrong?.transIdx === p.originalIndex ? styles.matchWrong : ''}`}
               onClick={() => handleSelect('trans', i, p.originalIndex)}
               disabled={matched.includes(p.originalIndex)}
-            >
-              {p.translation}
-            </button>
+            >{p.translation}</button>
           ))}
         </div>
       </div>
@@ -243,20 +217,17 @@ function MatchExercise({ exercise, onComplete }) {
   );
 }
 
-// ─── Shared Feedback Box ───
 function FeedbackBox({ feedback, answer }) {
   return (
     <div className={`${styles.feedback} ${styles[feedback]}`}>
       {feedback === 'correct' ? (
         <div className={styles.feedbackRow}>
-          <span className={styles.feedbackIcon}>✓</span>
-          <span>Correct!</span>
+          <span className={styles.feedbackIcon}>✓</span><span>Correct!</span>
         </div>
       ) : (
         <div>
           <div className={styles.feedbackRow}>
-            <span className={styles.feedbackIcon}>✗</span>
-            <span>Not quite</span>
+            <span className={styles.feedbackIcon}>✗</span><span>Not quite</span>
           </div>
           <p className={styles.answer}>{answer}</p>
         </div>
@@ -265,35 +236,59 @@ function FeedbackBox({ feedback, answer }) {
   );
 }
 
-// ─── Main Lesson Component ───
 export default function Lesson() {
   const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const { user } = useAuth();
+  const { user, token } = useAuth();
 
   const sentences = location.state?.sentences || [];
   const words = user?.language === 'french' ? frenchWords : spanishWords;
-
   const exercises = useMemo(() => buildExercises(sentences, words), [sentences, words]);
 
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [done, setDone] = useState(false);
+  const [saved, setSaved] = useState(false);
 
   const current = exercises[index];
   const progress = exercises.length > 0 ? ((index) / exercises.length) * 100 : 0;
 
+  // Save progress to backend when lesson is done
+  const saveProgress = async (finalScore) => {
+    if (saved) return;
+    try {
+      await fetch('/progress/complete', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          lessonId: id,
+          language: user?.language || 'spanish',
+          score: finalScore,
+          totalQuestions: exercises.length
+        })
+      });
+      setSaved(true);
+    } catch (err) {
+      console.error('Failed to save progress:', err);
+    }
+  };
+
   const handleExerciseComplete = (correct) => {
+    const newScore = correct ? score + 1 : score;
     if (correct) setScore(s => s + 1);
+
     if (index + 1 >= exercises.length) {
       setDone(true);
+      saveProgress(newScore);
     } else {
       setIndex(i => i + 1);
     }
   };
 
-  // No data
   if (exercises.length === 0) {
     return (
       <div className={styles.page}>
@@ -301,19 +296,14 @@ export default function Lesson() {
           <div className={styles.resultsCard}>
             <div className={styles.resultsIcon}>📭</div>
             <h1 className={styles.resultsTitle}>No lesson data</h1>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '24px' }}>
-              Go back to the dashboard and pick a lesson.
-            </p>
-            <button className={styles.btnPrimary} onClick={() => navigate('/dashboard')}>
-              Back to Dashboard
-            </button>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '24px' }}>Go back to the dashboard and pick a lesson.</p>
+            <button className={styles.btnPrimary} onClick={() => navigate('/dashboard')}>Back to Dashboard</button>
           </div>
         </div>
       </div>
     );
   }
 
-  // Results
   if (done) {
     const percent = Math.round((score / exercises.length) * 100);
     return (
@@ -339,12 +329,8 @@ export default function Lesson() {
               </div>
             </div>
             <div className={styles.resultsActions}>
-              <button className={styles.btnPrimary} onClick={() => { setDone(false); setIndex(0); setScore(0); }}>
-                Retry Lesson
-              </button>
-              <button className={styles.btnSecondary} onClick={() => navigate('/dashboard')}>
-                Back to Dashboard
-              </button>
+              <button className={styles.btnPrimary} onClick={() => { setDone(false); setIndex(0); setScore(0); setSaved(false); }}>Retry Lesson</button>
+              <button className={styles.btnSecondary} onClick={() => navigate('/dashboard')}>Back to Dashboard</button>
             </div>
           </div>
         </div>
@@ -364,19 +350,11 @@ export default function Lesson() {
         </div>
         <div className={styles.scorePill}>★ {score}</div>
       </header>
-
       <div className={styles.lessonArea} key={index}>
-        {current.type === 'translate' && (
-          <TranslateExercise exercise={current} onComplete={handleExerciseComplete} />
-        )}
-        {current.type === 'fillBlank' && (
-          <FillBlankExercise exercise={current} onComplete={handleExerciseComplete} />
-        )}
-        {current.type === 'match' && (
-          <MatchExercise exercise={current} onComplete={handleExerciseComplete} />
-        )}
+        {current.type === 'translate' && <TranslateExercise exercise={current} onComplete={handleExerciseComplete} />}
+        {current.type === 'fillBlank' && <FillBlankExercise exercise={current} onComplete={handleExerciseComplete} />}
+        {current.type === 'match' && <MatchExercise exercise={current} onComplete={handleExerciseComplete} />}
       </div>
-
       <p className={styles.shortcut}>Press <kbd>Enter</kbd> to submit</p>
     </div>
   );

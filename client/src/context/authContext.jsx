@@ -1,45 +1,114 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext(null);
+const API = '/api';
 
 export function AuthProvider({ children }) {
-  // Replace with real API calls to your backend
-  const [user, setUser] = useState(() => {
-    const stored = localStorage.getItem('lingua_user');
-    return stored ? JSON.parse(stored) : null;
-  });
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(() => localStorage.getItem('voca_token'));
+  const [loading, setLoading] = useState(true);
+
+  // On mount, if we have a token, fetch the user profile
+  useEffect(() => {
+    if (token) {
+      fetchUser(token);
+    } else {
+      setLoading(false);
+    }
+  }, []);
+
+  const fetchUser = async (t) => {
+    try {
+      const res = await fetch('/users/me', {
+        headers: { Authorization: `Bearer ${t}` }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setUser(data.user);
+      } else {
+        // Token expired or invalid
+        localStorage.removeItem('voca_token');
+        setToken(null);
+        setUser(null);
+      }
+    } catch (err) {
+      console.error('Failed to fetch user:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const login = async (email, password) => {
-    // TODO: replace with real API call
-    // const res = await fetch('/api/auth/login', { method: 'POST', body: JSON.stringify({ email, password }) });
-    // const data = await res.json();
-    const mockUser = { id: '1', email, name: email.split('@')[0], language: null };
-    localStorage.setItem('lingua_user', JSON.stringify(mockUser));
-    setUser(mockUser);
-    return mockUser;
+    const res = await fetch('/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.error || 'Login failed');
+    }
+
+    localStorage.setItem('voca_token', data.token);
+    setToken(data.token);
+    setUser(data.user);
+    return data.user;
   };
 
   const register = async (email, password, name) => {
-    // TODO: replace with real API call
-    const mockUser = { id: '1', email, name, language: null };
-    localStorage.setItem('lingua_user', JSON.stringify(mockUser));
-    setUser(mockUser);
-    return mockUser;
+    const res = await fetch('/auth/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, password })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.error || 'Registration failed');
+    }
+
+    localStorage.setItem('voca_token', data.token);
+    setToken(data.token);
+    setUser(data.user);
+    return data.user;
   };
 
-  const setLanguage = (language) => {
-    const updated = { ...user, language };
-    localStorage.setItem('lingua_user', JSON.stringify(updated));
-    setUser(updated);
+  const setLanguage = async (language) => {
+    try {
+      const res = await fetch('/users/language', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ language })
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        setUser(data.user);
+      }
+    } catch (err) {
+      console.error('Failed to set language:', err);
+    }
   };
 
   const logout = () => {
-    localStorage.removeItem('lingua_user');
+    localStorage.removeItem('voca_token');
+    setToken(null);
     setUser(null);
   };
 
+  // Show nothing while checking token on first load
+  if (loading) {
+    return null;
+  }
+
   return (
-    <AuthContext.Provider value={{ user, login, register, setLanguage, logout }}>
+    <AuthContext.Provider value={{ user, token, login, register, setLanguage, logout }}>
       {children}
     </AuthContext.Provider>
   );
