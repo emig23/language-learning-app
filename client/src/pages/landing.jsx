@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import styles from '../styles/Landing.module.css';
+import styles from '../styles/landing.module.css';
 
 const FEATURES = [
   {
