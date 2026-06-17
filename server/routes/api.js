@@ -4,7 +4,8 @@ const WordVocabItem = require('../models/WordVocabItem');
 const SentenceItem = require('../models/Sentence');
 const authMiddleware = require('../middleware/authMiddleware');
 
-// Get words by language, optionally filter by difficulty
+// Get words by language 
+// Filter by difficulty optional
 router.get('/words', authMiddleware, async (req, res) => {
     try {
         const { language, difficulty } = req.query;
@@ -24,7 +25,8 @@ router.get('/words', authMiddleware, async (req, res) => {
     }
 });
 
-// Get sentences by language, optionally filter by difficulty
+// Get sentences by language
+// Filter by difficulty optional
 router.get('/sentences', authMiddleware, async (req, res) => {
     try {
         const { language, difficulty } = req.query;

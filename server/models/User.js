@@ -33,6 +33,21 @@ const userSchema = new mongoose.Schema({
         default: 0
     },
 
+    totalPoints: {
+        type: Number,
+        default: 0
+    },
+
+    lessonsCompleted: {
+        type: Number,
+        default: 0
+    },
+
+    lastActiveDate: {
+        type: Date,
+        default: null
+    },
+
     currLevel: {
         type: String,
         default: 'Beginner'

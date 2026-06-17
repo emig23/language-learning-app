@@ -9,6 +9,7 @@ const connectDB = require('./config/db');
 const authRoutes = require('./routes/auth');
 const usersRoutes = require('./routes/users');
 const apiRoutes = require('./routes/api');
+const progressRoutes = require('./routes/progress');
 
 // Connect to database
 connectDB();
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use('/auth', authRoutes);
 app.use('/users', usersRoutes);
 app.use('/api', apiRoutes);
+app.use('/progress', progressRoutes);
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
