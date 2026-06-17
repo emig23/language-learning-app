@@ -8,7 +8,7 @@ export function AuthProvider({ children }) {
   const [token, setToken] = useState(() => localStorage.getItem('voca_token'));
   const [loading, setLoading] = useState(true);
 
-  // On mount, if we have a token, fetch the user profile
+  // Fetch user profile if token
   useEffect(() => {
     if (token) {
       fetchUser(token);

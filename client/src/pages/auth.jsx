@@ -41,7 +41,7 @@ export default function Auth() {
   return (
     <div className={styles.page}>
 
-      {/* Left panel — branding */}
+      {/* Left panel */}
       <div className={styles.leftPanel}>
         <div className={styles.leftGlow} />
         <div className={styles.leftContent}>
@@ -73,7 +73,7 @@ export default function Auth() {
         </div>
       </div>
 
-      {/* Right panel — form */}
+      {/* Right panel */}
       <div className={styles.rightPanel}>
         <div className={styles.formContainer}>
 

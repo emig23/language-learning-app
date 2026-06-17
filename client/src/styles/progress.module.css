@@ -4,7 +4,7 @@
   max-width: 1200px;
 }
 
-/* ── Top bar ── */
+/* Top bar */
 .topBar {
   margin-bottom: 32px;
 }
@@ -22,7 +22,7 @@
   margin: 0;
 }
 
-/* ── Overview row ── */
+/* Overview row */
 .overviewRow {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -61,7 +61,7 @@
   font-weight: 500;
 }
 
-/* ── Columns ── */
+/* Columns */
 .columns {
   display: grid;
   grid-template-columns: 1fr 340px;
@@ -81,7 +81,7 @@
   gap: 16px;
 }
 
-/* ── Shared card ── */
+/* Shared card */
 .card {
   background: var(--bg-surface);
   border: 1px solid var(--border);
@@ -112,7 +112,7 @@
   border-radius: 99px;
 }
 
-/* ── Streak ── */
+/* Streak */
 .streakGrid {
   display: flex;
   justify-content: space-between;
@@ -163,7 +163,7 @@
   font-weight: 600;
 }
 
-/* ── Milestones ── */
+/* Milestones */
 .milestoneList {
   display: flex;
   flex-direction: column;
@@ -259,7 +259,7 @@
   white-space: nowrap;
 }
 
-/* ── Studying card ── */
+/* Studying card */
 .studyingCard {
   background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   border-radius: 18px;
@@ -316,7 +316,7 @@
   margin: 0;
 }
 
-/* ── Recent lessons ── */
+/* Recent lessons */
 .recentList {
   display: flex;
   flex-direction: column;
@@ -387,7 +387,7 @@
   color: var(--accent-teal);
 }
 
-/* ── Responsive ── */
+/* Responsive */
 @media (max-width: 900px) {
   .overviewRow {
     grid-template-columns: repeat(2, 1fr);

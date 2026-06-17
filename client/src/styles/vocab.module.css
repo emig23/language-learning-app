@@ -21,7 +21,7 @@
   margin: 0;
 }
 
-/* ── Controls ── */
+/* Controls */
 .controls {
   display: flex;
   justify-content: space-between;
@@ -88,7 +88,7 @@
   color: var(--text-muted);
 }
 
-/* ── Word grid ── */
+/* Word grid */
 .wordGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -181,7 +181,7 @@
   border-radius: 99px;
 }
 
-/* ── Empty ── */
+/* Empty */
 .empty {
   text-align: center;
   padding: 60px 20px;
@@ -189,7 +189,7 @@
   font-size: 15px;
 }
 
-/* ── Responsive ── */
+/* Responsive */
 @media (max-width: 600px) {
   .page {
     padding: 20px 16px;

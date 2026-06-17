@@ -5,7 +5,7 @@
   overflow-x: hidden;
 }
 
-/* ── Nav ── */
+/* Nav */
 .nav {
   display: flex;
   justify-content: space-between;
@@ -75,7 +75,7 @@
   opacity: 0.88;
 }
 
-/* ── Hero ── */
+/* Hero */
 .hero {
   display: flex;
   align-items: center;
@@ -247,7 +247,7 @@
   box-shadow: 0 8px 24px rgba(0,0,0,0.3);
 }
 
-/* ── Sections ── */
+/* Sections */
 .section {
   max-width: 1100px;
   margin: 0 auto;
@@ -407,7 +407,7 @@
   color: var(--text-muted);
 }
 
-/* ── Responsive ── */
+/* Responsive */
 @media (max-width: 768px) {
   .nav {
     padding: 16px 20px;

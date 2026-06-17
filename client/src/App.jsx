@@ -20,7 +20,7 @@ function AppRoutes() {
 
   return (
     <Routes>
-      {/* Landing page — public */}
+      {/* Landing page */}
       <Route path="/" element={user ? <Navigate to="/dashboard" replace /> : <Landing />} />
 
       {/* Auth */}
@@ -31,7 +31,7 @@ function AppRoutes() {
         <ProtectedRoute><LanguageSelect /></ProtectedRoute>
       } />
 
-      {/* App — protected, uses bottom nav layout */}
+      {/* App */}
       <Route path="/" element={
         <ProtectedRoute><Layout /></ProtectedRoute>
       }>

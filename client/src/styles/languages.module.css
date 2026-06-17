@@ -4,7 +4,7 @@
   max-width: 1200px;
 }
 
-/* ── Top bar ── */
+/* Top bar */
 .topBar {
   margin-bottom: 32px;
 }
@@ -22,7 +22,7 @@
   margin: 0;
 }
 
-/* ── Sections ── */
+/* Sections */
 .section {
   margin-bottom: 32px;
 }
@@ -36,7 +36,7 @@
   margin: 0 0 16px;
 }
 
-/* ── Active card ── */
+/* Active card */
 .activeCard {
   background: var(--bg-surface);
   border: 1px solid var(--border);
@@ -134,7 +134,7 @@
   background: var(--border);
 }
 
-/* ── Language grid ── */
+/* Language grid */
 .langGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -282,7 +282,7 @@
   margin: 0;
 }
 
-/* ── Responsive ── */
+/* Responsive */
 @media (max-width: 900px) {
   .activeContent {
     flex-direction: column;

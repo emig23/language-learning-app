@@ -4,7 +4,7 @@
   max-width: 1200px;
 }
 
-/* ── Top bar ── */
+/* Top bar */
 .topBar {
   display: flex;
   justify-content: space-between;
@@ -38,7 +38,7 @@
   font-weight: 600;
 }
 
-/* ── Stats row ── */
+/* Stats row */
 .statsRow {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -85,7 +85,7 @@
   font-weight: 500;
 }
 
-/* ── Two columns ── */
+/* Two columns */
 .columns {
   display: grid;
   grid-template-columns: 1fr 340px;
@@ -263,7 +263,7 @@
   font-weight: 500;
 }
 
-/* ── Right column ── */
+/* Right column */
 .colRight {
   display: flex;
   flex-direction: column;
@@ -428,7 +428,7 @@
   line-height: 1.5;
 }
 
-/* ── Responsive ── */
+/* Responsive */
 @media (max-width: 900px) {
   .statsRow {
     grid-template-columns: repeat(2, 1fr);
