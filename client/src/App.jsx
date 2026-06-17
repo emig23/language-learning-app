@@ -1,14 +1,14 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/authContext';
-import Landing from './pages/Landing';
-import Auth from './pages/Auth';
-import LanguageSelect from './pages/LanguageSelect';
-import Dashboard from './pages/Dashboard';
-import Lesson from './pages/Lesson';
-import Progress from './pages/Progress';
-import Languages from './pages/Languages';
-import Layout from './components/Layout';
-import Vocab from './pages/Vocab';
+import Landing from './pages/landing';
+import Auth from './pages/auth';
+import LanguageSelect from './pages/languageSelect';
+import Dashboard from './pages/dashboard';
+import Lesson from './pages/lesson';
+import Progress from './pages/progress';
+import Languages from './pages/languages';
+import Layout from './components/layout';
+import Vocab from './pages/vocab';
 
 function ProtectedRoute({ children }) {
   const { user } = useAuth();

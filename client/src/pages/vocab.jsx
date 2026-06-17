@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect } from 'react';
 import { useAuth } from '../context/authContext';
 import styles from '../styles/vocab.module.css';
 
+const API_URL = import.meta.env.VITE_API_URL || '';
 const DIFFICULTY_ORDER = ['beginner', 'intermediate', 'advanced'];
 
 function LoadingSpinner({ message }) {
@@ -23,7 +24,7 @@ export default function Vocab() {
   useEffect(() => {
     if (!token || !user?.language) { setLoading(false); return; }
 
-    fetch(`/api/words?language=${user.language}`, {
+    fetch(`${API_URL}/api/words?language=${user.language}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => res.json())

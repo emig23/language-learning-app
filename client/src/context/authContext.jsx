@@ -1,14 +1,13 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext(null);
-const API = '/api';
+const API_URL = import.meta.env.VITE_API_URL || '';
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(() => localStorage.getItem('voca_token'));
   const [loading, setLoading] = useState(true);
 
-  // Fetch user profile if token
   useEffect(() => {
     if (token) {
       fetchUser(token);
@@ -19,14 +18,13 @@ export function AuthProvider({ children }) {
 
   const fetchUser = async (t) => {
     try {
-      const res = await fetch('/users/me', {
+      const res = await fetch(`${API_URL}/users/me`, {
         headers: { Authorization: `Bearer ${t}` }
       });
       if (res.ok) {
         const data = await res.json();
         setUser(data.user);
       } else {
-        // Token expired or invalid
         localStorage.removeItem('voca_token');
         setToken(null);
         setUser(null);
@@ -39,7 +37,7 @@ export function AuthProvider({ children }) {
   };
 
   const login = async (email, password) => {
-    const res = await fetch('/auth/login', {
+    const res = await fetch(`${API_URL}/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
@@ -58,7 +56,7 @@ export function AuthProvider({ children }) {
   };
 
   const register = async (email, password, name) => {
-    const res = await fetch('/auth/register', {
+    const res = await fetch(`${API_URL}/auth/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email, password })
@@ -78,7 +76,7 @@ export function AuthProvider({ children }) {
 
   const setLanguage = async (language) => {
     try {
-      const res = await fetch('/users/language', {
+      const res = await fetch(`${API_URL}/users/language`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -102,7 +100,6 @@ export function AuthProvider({ children }) {
     setUser(null);
   };
 
-  // Show nothing while checking token on first load
   if (loading) {
     return null;
   }

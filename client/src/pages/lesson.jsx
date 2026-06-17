@@ -3,6 +3,8 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
 import styles from '../styles/lesson.module.css';
 
+const API_URL = import.meta.env.VITE_API_URL || '';
+
 function normalize(str) {
   return str.trim().toLowerCase()
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
@@ -252,11 +254,10 @@ export default function Lesson() {
   const [words, setWords] = useState([]);
   const [wordsLoaded, setWordsLoaded] = useState(false);
 
-  // Fetch words from API for match exercises
   useEffect(() => {
     if (!token || !user?.language) { setWordsLoaded(true); return; }
 
-    fetch(`/api/words?language=${user.language}`, {
+    fetch(`${API_URL}/api/words?language=${user.language}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => res.json())
@@ -280,7 +281,7 @@ export default function Lesson() {
   const saveProgress = async (finalScore) => {
     if (saved) return;
     try {
-      await fetch('/progress/complete', {
+      await fetch(`${API_URL}/progress/complete`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -311,12 +312,10 @@ export default function Lesson() {
     }
   };
 
-  // Loading words
   if (!wordsLoaded) {
     return <LoadingSpinner message="Preparing your lesson..." />;
   }
 
-  // No data
   if (exercises.length === 0) {
     return (
       <div className={styles.page}>
@@ -332,7 +331,6 @@ export default function Lesson() {
     );
   }
 
-  // Results
   if (done) {
     const percent = Math.round((score / exercises.length) * 100);
     return (

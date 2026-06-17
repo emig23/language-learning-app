@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
 import styles from '../styles/dashboard.module.css';
 
+const API_URL = import.meta.env.VITE_API_URL || '';
+
 const DIFFICULTY_COLOR = {
   beginner:     'var(--accent-teal)',
   intermediate: 'var(--accent-orange)',
@@ -99,13 +101,13 @@ export default function Dashboard() {
     const fetchAll = async () => {
       try {
         const [sentRes, progRes, statsRes] = await Promise.all([
-          fetch(`/api/sentences?language=${user.language}`, {
+          fetch(`${API_URL}/api/sentences?language=${user.language}`, {
             headers: { Authorization: `Bearer ${token}` }
           }),
-          fetch(`/progress?language=${user.language}`, {
+          fetch(`${API_URL}/progress?language=${user.language}`, {
             headers: { Authorization: `Bearer ${token}` }
           }),
-          fetch('/progress/stats', {
+          fetch(`${API_URL}/progress/stats`, {
             headers: { Authorization: `Bearer ${token}` }
           })
         ]);

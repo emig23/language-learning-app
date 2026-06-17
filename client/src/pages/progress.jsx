@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/authContext';
 import styles from '../styles/progress.module.css';
+const API_URL = import.meta.env.VITE_API_URL || '';
 
 export default function Progress() {
   const { user, token } = useAuth();
